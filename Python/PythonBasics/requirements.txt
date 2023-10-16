@@ -1,0 +1,24 @@
+requests==2.31.0
+psycopg2==2.9.7
+
+# Creating the Env-------
+# C:\Users\dquadros\AppData\Local\Programs\Python\Python311\python -m venv D:\LearnToCode\pythonVenv\LearnPythonEnv --Olpt
+# C:\Users\darre\AppData\Local\Programs\Python\Python311\python -m venv D:\TestingData\PythonEnvs\PythonBasics --plpt
+
+# Switch to the Env------
+# C:\Darren\Projects\PythonVirtualEnviornments\LearnPythonEnv\Scripts\activate.bat AND C:\Darren\Projects\PythonVirtualEnviornments\LearnPythonEnv\Scripts\deactivate.bat
+# D:\TestingData\PythonEnvs\PythonBasics\Scripts\activate.bat AND D:\TestingData\PythonEnvs\SSSPL-Dagster-Starlink\Scripts\deactivate.bat --Personal laptop
+
+# Switch to our folder------
+#
+# cd D:\LearnToCode\GitRepos\PythonProjects\PythonBasics  --plpt
+
+
+# Install the packages------
+# pip install -r C:\Users\dquadros\OneDrive\Office\LEARNING\Python\requirements.txt
+# pip install -r D:\LearnToCode\GitRepos\PythonProjects\PythonBasics\requirements.txt --plpt
+
+
+# In VsCode switch the Interpreter by opening command palette ctr+Shit+p >> Python: Select Interpreter
+#
+# D:\TestingData\PythonEnvs\SSSPL-Dagster-Starlink\Scripts\python --plpt
