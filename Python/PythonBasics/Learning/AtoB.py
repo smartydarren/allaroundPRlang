@@ -15,8 +15,8 @@ def copytoDB(listOfApi) :
     password = 'test@2023;'
     tsc = 'TrustServerCertificate=false;'
 
-    cnxn = pyodbc.connect(driver+server+database+username+password+tsc)
-    print(cnxn)
+    # cnxn = pyodbc.connect(driver+server+database+username+password+tsc)
+    # print(cnxn)
 
     # listofapia = []
     # for apik in data['entries']:

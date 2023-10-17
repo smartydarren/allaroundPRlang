@@ -1,5 +1,6 @@
 requests==2.31.0
 psycopg2==2.9.7
+pyodbc==5.0.1
 
 # Creating the Env-------
 # C:\Users\dquadros\AppData\Local\Programs\Python\Python311\python -m venv D:\LearnToCode\pythonVenv\LearnPythonEnv --Olpt
@@ -16,7 +17,7 @@ psycopg2==2.9.7
 
 # Install the packages------
 # pip install -r C:\Users\dquadros\OneDrive\Office\LEARNING\Python\requirements.txt
-# pip install -r D:\LearnToCode\GitRepos\PythonProjects\PythonBasics\requirements.txt --plpt
+# pip install -r D:\LearnToCode\GitRepos\allaroundPRlang\Python\PythonBasics\requirements.txt --plpt
 
 
 # In VsCode switch the Interpreter by opening command palette ctr+Shit+p >> Python: Select Interpreter

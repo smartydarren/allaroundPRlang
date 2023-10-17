@@ -17,7 +17,8 @@ class StudentLala:
         
 
 
-#main file code
+'''
+# main file code
 from Learning.class_student import StudentLala
 
 student1 = StudentLala('jim','M',36,'business',5.1,False)
@@ -32,7 +33,7 @@ if result is True:
     print('Student is on the honors roll')
 else:
     print('No honors acheived')     
-
+'''
         
 
 

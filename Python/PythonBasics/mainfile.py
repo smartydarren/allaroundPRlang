@@ -1,5 +1,6 @@
 from Learning import func as t1
 from Learning import decoratorsEG
+from Learning.class_student import StudentLala
 
 #decoratorsEG.printFirstName('darren')
 #decoratorsEG.printLastName('quadros')
@@ -39,3 +40,17 @@ def solution(N):
 
 
 solution(123)
+
+
+student1 = StudentLala('jim','M',36,'business',5.1,False)
+student2 = StudentLala('Pam','F',35,'arts',4.1,True)
+print(student1.name,student1.gpa)
+print(student2.name,student2.gpa)
+
+result = ''
+result = student1.on_honor_roll()
+
+if result is True:
+    print('Student is on the honors roll')
+else:
+    print('No honors acheived')     

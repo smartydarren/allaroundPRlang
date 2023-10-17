@@ -58,7 +58,7 @@ else:
 print(f"Hello Buyer you down payment would be: INR {downpayment} ")
 
 #Logical conditions
-#and or not, comparision operators ><=!= etc ==
+#and or not, comparision operators > < =! = etc ==
 
 #eg test
 name = input('What is your Name? ')
@@ -148,7 +148,7 @@ for price in prices:
     total = total + price
 print(f"Total is : {total}")
 
-#for loop example with retur statement on outer side
+#for loop example with return statement on outer side
 i = -1
 def search(list,n): 
     for item in list:
@@ -210,7 +210,7 @@ def sort(nums):
             print(nums)
         
 #select sort
-def sort(nums):
+def selectsort(nums):
     for item in range(len(nums)):
         minpos = item
         print(item,nums)
@@ -367,7 +367,7 @@ greet_userss('Aislinn','Quadros')
 print('Finish')
 
 
-#Keyword arguments(the order of the parameter matrers)
+#Keyword arguments(the order of the parameter matters)
 def greet_users(first_name,last_name):
     print(f'Hi {first_name},{last_name}')
     print('Welcome Aboard !')
@@ -378,7 +378,7 @@ greet_users(last_name='Quadros',first_name='Darren')
 greet_users('Quadros','Aislinn')
 print('Finish')
 
-#Return statements(its is particularly useful for returning a result while calculates)
+#Return statements(its is particularly useful for returning a result while it calculates)
 #by default all functions return none
 def square(number):
     return number * number
@@ -503,7 +503,7 @@ class Person: #this is a class(blueprint/design)
 
     company = 'Writer Relocations' #class/static variable (Class namespace)
 
-    def __init__(self,name,age,m1,m2):  #this is actually a constructor, and is responsible to assign the obejct a memory,the size etx
+    def __init__(self,name,age,m1,m2):  #this is actually a constructor, and is responsible to assign the obejct a memory,the size etc
         self.name = name          #instance variable/attributes/properties (Instance namespace)
         self.age = age
         self.m1 = m1
