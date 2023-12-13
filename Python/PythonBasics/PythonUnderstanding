@@ -10,8 +10,10 @@ To create a package system - Root Folder with __Init__.py >> Subfolder with __In
 Virtual Enviornments are to be used with projects and built in dependencies
 =============
 One can create unlimited virtual enviornments and keep switching based on working project to manage dependencies.
-set olpt=
+set olpt=C:\Darren\TestingData\PythonVirtualEnviornments
 set user=dquadros
+set pversion=Python312
+set penv=testenv312
 
 set user=darre
 set plpt=D:\TestingData\PythonEnvs

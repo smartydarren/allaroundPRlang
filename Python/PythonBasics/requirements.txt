@@ -1,13 +1,14 @@
 requests==2.31.0
-psycopg2==2.9.7
-pyodbc==5.0.1
+#psycopg2==2.9.7
+#pyodbc==5.0.1
 
 # Creating the Env-------
 # C:\Users\dquadros\AppData\Local\Programs\Python\Python311\python -m venv D:\LearnToCode\pythonVenv\LearnPythonEnv --Olpt
 # C:\Users\darre\AppData\Local\Programs\Python\Python311\python -m venv D:\TestingData\PythonEnvs\PythonBasics --plpt
+# C:\Python312\python -m venv C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv
 
 # Switch to the Env------
-# C:\Darren\Projects\PythonVirtualEnviornments\LearnPythonEnv\Scripts\activate.bat AND C:\Darren\Projects\PythonVirtualEnviornments\LearnPythonEnv\Scripts\deactivate.bat
+# C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\activate.bat AND C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\deactivate.bat
 # D:\TestingData\PythonEnvs\PythonBasics\Scripts\activate.bat AND D:\TestingData\PythonEnvs\SSSPL-Dagster-Starlink\Scripts\deactivate.bat --Personal laptop
 
 # Switch to our folder------

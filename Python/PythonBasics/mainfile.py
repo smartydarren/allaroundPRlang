@@ -1,10 +1,14 @@
-from Learning import func as t1
-from Learning import decoratorsEG
-from Learning.class_student import StudentLala
+# from Learning import func as t1
+# from Learning import decoratorsEG
+# from Learning.class_student import StudentLala
+# from Learning import func
+from Learning import codingProblems as cdp
+from Learning import lessons
+# decoratorsEG.printFirstName('darren')
+# decoratorsEG.printLastName('quadros')
 
-#decoratorsEG.printFirstName('darren')
-#decoratorsEG.printLastName('quadros')
 
+'''
 import json
 
 x = {
@@ -53,4 +57,10 @@ result = student1.on_honor_roll()
 if result is True:
     print('Student is on the honors roll')
 else:
-    print('No honors acheived')     
+    print('No honors acheived')
+
+func.myTables(56);
+'''
+
+x = lessons.recursionFactorial(5);
+print(x)
