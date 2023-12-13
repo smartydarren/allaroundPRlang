@@ -1,15 +1,19 @@
 undefined - when the variable is not assigned any value {let userName; console.log("Hello " , userName);}
 NaN - not a number
 
+# operators
 = assignment operator
 == comparision operator (this disregards the datatype)
-=== strict equality operator (compares the value and datatype e.g x = "3.14" we cannot use sting with arithmetic operations)
+=== strict equality operator (compares the value and datatype e.g x = "3.14" we cannot use string with arithmetic operations)
 
 Gives us the ability to check more thatn 1 condition concurrently
 && AND (Both must be true)
 || OR (Either one must be true)
 
 ! NOT logical operator, typically used to reverse a conditions boolean value, If True -> false, If false -> true.
+
+
+# Loops
 
 While Loop - repeats same while something is true, potentially infinite.
 
@@ -23,6 +27,7 @@ nested loop - a loop inside another loop
 
 Addition assignment (+=) which is either numeric addition or string concatenation
 
+# Functions
 function - you define code once and then use it many times
 return - return a value back to the place where you invoked a function
 
@@ -51,8 +56,6 @@ array.filter() - 	Creates a new array with all elements
 			that pass the test provided by a function.
 
 predicate function - is a function that returns a Boolean value.
-
-array.
 
 
 
