@@ -23,6 +23,6 @@ document.getElementById("resetBtn").onclick = function(){
     document.getElementById("countLabel").innerHTML = count;
 }
 
-console.log(randomNumber);
+//console.log(randomNumber);
 
 

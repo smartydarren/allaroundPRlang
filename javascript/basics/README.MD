@@ -12,6 +12,7 @@ Gives us the ability to check more thatn 1 condition concurrently
 
 ! NOT logical operator, typically used to reverse a conditions boolean value, If True -> false, If false -> true.
 
+Arithmetic operators + - / x %
 
 # Loops
 
@@ -29,6 +30,8 @@ Addition assignment (+=) which is either numeric addition or string concatenatio
 
 # Functions
 function - you define code once and then use it many times
+	Parameters - is what you define in the brackets of the function which accepts arguments
+	Arguments - is what you pass to the function while calling it
 return - return a value back to the place where you invoked a function
 
 ternary operator - shortcut for if else statement
@@ -48,7 +51,7 @@ Arrays - a variable which can store multiple values
 
 Callbacks - a function passed as an argument to another function.
 
-array.map()  -	 	Executes a call back function 
+array.map()  -	Executes a call back function 
 			one for each array element
 			AND creates a new array
 
@@ -58,4 +61,18 @@ array.filter() - 	Creates a new array with all elements
 predicate function - is a function that returns a Boolean value.
 
 
+# Objects classes etc
+ # object - A group of properties and methods [use . to access properties/methods]
+	Properties - what an object has
+	Methods - what an object can do
 
+	this keyword = its a reference to a particular object
+					the object depends on the immedeate context
+
+ # classes - its a blueprint for creating objects
+			define what properties and methods they have and use a constructor for unique properties
+			reuse this class to create multiple objects rather than creating objects with unique stuff everything.
+
+	static - belongs to a class and not to the object
+ # Inheritance - a child class can inherit all the methods and propertiesfrom another class
+ super keyword refers to the parent class, its commonly used to invoke the constructor of the parent class

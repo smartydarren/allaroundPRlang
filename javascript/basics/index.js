@@ -207,7 +207,7 @@ function printToConsole(element){
     console.log(element);
 }
 
-*/
+
 
 //array.filter
 let ages = [18,19,20,25,30, 16, 17, 9, 7]
@@ -221,8 +221,59 @@ function checkAge(element){
 function printToConsole(element){
     console.log(element);
 }
+*/
+let ages = [5,10,20,25,30, 16, 17, 9, 7, 88]
+//const pt = ages.map((element,i,a) => console.log(element * 2, i, a))
 
+document.getElementById("login").onclick = function(){
+    return alert("Hello Darren")
+} 
 
+function log(value){
+    console.log(value)
+}
 
+function sum2numbers(n1,n2,printFunc){
+    let sum = n1 + n2
+    printFunc(sum);
+}
 
+function doubletheNumbers(element,i,a){
+    a = a[i] * element;
+    console.log(a)
+}
     
+//log("Hello")
+//sum2numbers(2,2,(v)=> console.log(v));
+ages.map(doubletheNumbers);
+
+//object
+const car = {
+    model:"mustang",
+    year:2021,
+    color:"red",
+
+    drive : function(){
+        console.log(`you drive the car : ${this.model}`)
+        console.log(`you drive the car : ${car.model}`)
+    } 
+}
+
+car.drive();
+
+//clases
+class student{
+
+    constructor(name, age, gpa){
+        this.name = name
+        this.age = age
+        this.gpa = gpa        
+        }
+
+        study(){
+          console.log(`${this.name} is studying`)
+    }
+}
+
+const darren = new student("darren", 39, 6.5)
+darren.study()
