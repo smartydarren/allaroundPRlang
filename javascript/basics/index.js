@@ -221,7 +221,7 @@ function checkAge(element){
 function printToConsole(element){
     console.log(element);
 }
-*/
+
 let ages = [5,10,20,25,30, 16, 17, 9, 7, 88]
 //const pt = ages.map((element,i,a) => console.log(element * 2, i, a))
 
@@ -245,7 +245,7 @@ function doubletheNumbers(element,i,a){
     
 //log("Hello")
 //sum2numbers(2,2,(v)=> console.log(v));
-ages.map(doubletheNumbers);
+//ages.map(doubletheNumbers);
 
 //object
 const car = {
@@ -259,7 +259,7 @@ const car = {
     } 
 }
 
-car.drive();
+//car.drive();
 
 //clases
 class student{
@@ -276,4 +276,178 @@ class student{
 }
 
 const darren = new student("darren", 39, 6.5)
-darren.study()
+const aislinn = new student("aislinn", 39, 7.5)
+//darren.study()
+
+//passing an object as an argumen
+function changeGpa(student, gpa){
+    oldGpa = student.gpa
+    student.gpa = gpa
+    console.log(`Old gpa of ${student.name} is ${oldGpa}, new gpa is ${student.gpa}`)
+}
+
+function changeGpaOnly(student){
+    oldGpa = student.gpa
+    student.gpa = gpa
+    console.log(`Old gpa is ${oldGpa}, new gpa is ${student.gpa}`)
+}
+
+//changeGpa(darren,7.7)
+const students = [darren,aislinn]
+
+//students.forEach(changeGpa);
+
+//array of objects
+function updateGpa(students1){
+    for(const s of students1){
+        gpa = 11.11
+        changeGpa(s,gpa);
+    }
+};
+
+updateGpa(students);
+
+//error handling
+try {
+    console.lag()
+} catch (error) {
+    console.log(error);
+} finally{
+    console.log("Finally Block")
+}
+
+
+let date = new Date();
+//dateLocal = date.toLocaleDateString();
+//date = date.getTime();
+//getHours = date.getHours();
+document.getElementById("mylable").innerHTML = date;
+
+(() => { 
+    console.log("GeeksforGeeks"); 
+  })();
+
+//asynchronous eg
+console.log("Start at Step 1");
+setTimeout(() => {console.log("Async step 2 completing after 5 secs")},5000);
+console.log("Finish at Step 3");
+console.time("Timer")
+   setTimeout(() => {
+    console.timeEnd("Timer")
+    }, 5000);
+
+//Promise
+const promise = new Promise((resolve,reject) => {
+    let fileload = true;
+
+    if (fileload){
+        resolve("File loaded successfully")
+    }else{
+        reject("File upload rejected")
+    }
+});
+
+promise.then((retVal) => {
+    console.log(retVal);
+}).catch((retvalF) => {
+    console.log(retvalF);
+});
+
+//2nd example
+const wait = (tim) => {return new Promise((resol) => {
+    setTimeout(resol,tim)
+})};
+
+wait(3000).then(() => {console.log("Thanks for waiting!!")})
+
+
+function changeBgColor(){
+    const clr = ["skyblue","red"]
+
+        setTimeout(() => {
+            for(i=0;i<clr.length;i++){
+                document.body.style.backgroundColor = clr[i];
+                console.log(`Color is : ${clr[i]}`)
+            }
+        },5000)
+    };
+
+    
+
+changeBgColor();
+*/
+
+//using axios library
+
+// class crcrd{
+//     cc = null;
+//     constructor(ccd){
+//         this.cc = ccd;
+//     }
+    
+// }
+
+// async function getRandomUser() {
+//     try {
+//       const data = await axios.get("https://random-data-api.com/api/users/random_user");
+//       //console.log(data.data)
+//       return data;
+//     } catch(err) {
+//       console.log("error: ", err);
+//     }
+//   }
+
+//   const printAddress = async () => {
+//      const a = await getRandomUser();
+//      const creditcard = new crcrd(a.data.credit_card.cc_number);
+//      console.log(creditcard.cc);
+//    };
+
+// printAddress();
+
+function findElement( arr, n, key)
+{
+    let i;
+    for (i = 0; i < n; i++)
+        if (arr[i] == key)
+            return i;
+ 
+    return -1;
+}
+ 
+      
+    // Driver program
+   
+    class student{
+
+        constructor(name, age, gpa){
+            this.name = name
+            this.age = age
+            this.gpa = gpa        
+            }
+    
+            study(){
+              console.log(`${this.name} is studying`)
+        }
+    }
+
+    let arr = [12, 34, 10, 6, 40];
+    const aaa = new student("Darren",21,7);
+    let arr1 = new Array<student>(2);
+    let arr2 = new Array();
+    arr1[0] = aaa;
+
+    console.log(arr1);
+    
+
+    // let n = arr.length;
+ 
+    // // Using a last element as search element
+    // let key = 12;
+    // let position = findElement(arr, n, key);
+ 
+    // if (position == - 1)
+    //     document.write("Element not found");
+    // else
+    //     document.write("Element Found at Position: "
+    //          + (position + 1));

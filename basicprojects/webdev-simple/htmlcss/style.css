@@ -1,0 +1,67 @@
+body {
+    background-color: #EEEEEE;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+    color: red;
+}
+
+h1, h2 {
+    margin: 0%;
+}
+
+#container {
+    background-color: white;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+    & #header {
+        background-color: lightblue;
+        color: white;
+        text-align: center;
+        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 10px;
+    }
+
+    & #content {
+        padding: 10px;
+
+        & #main {
+            width: 780px;
+            float: right;
+        }
+        
+        & #nav {
+            width: 180px;
+            float: left;
+
+            & .selected {
+                font-weight:bold ;
+            }
+
+            & ul {
+                list-style-type: none;
+                padding: 0%;
+            }
+        }
+    }
+    
+    & #footer {
+        clear: both;
+        text-align: right;
+        font-weight: bold;
+        padding: 10px;
+        background-color: lavenderblush;
+        /*margin-right: 10px;*/
+    }
+}
+
+    
+
+    
+
+    
