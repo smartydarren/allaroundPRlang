@@ -1,0 +1,20 @@
+Web API is just a concept - its not a technology, its like SQL over HTTP, e.g if we need to deliver data we just cant sent sql over the web, we can sent data in formats like json,xml etc - its not beautiful/pretty but its useful data which other applications can use like react to render it on the screen. etc.............
+=============
+API is used to assist/expose it to different types of applications (Android,IOS,C#,PHP etc) to fetch and post database. also to avoid duplication/misallignment of code in every applicaiton and avoid talking to the database directly we use API. It establishes a connection with the database and rest all applications will commuicate withe the Web API project.
+
+It also adds abstraction, as the code is not visible to the calling application.
+It avoids business duplication
+Security as does not allows to talk to the database directly
+
+What is REST{Representation state Transfer} - Its a combination of principals that must be followed by a web API project.
+Url,stateless,verbs etc
+
+DTO's :- 
+Right now, our web API exposes the database entities to the client. The client receives data that maps directly to your database tables. However, that's not always a good idea. Sometimes you want to change the shape of the data that you send to client. For example, you might want to:
+HTTP Request major Components : Url, Verb(Method), Header/s, Body, Data etc
+HTTP Responset major Components : Status Code, Header/s, Data etc
+
+Frequently used Code - 200 OK, 201 new resource, 400 Bad Request, 401 UnAuthorised, 404 Resource not found
+
+
+

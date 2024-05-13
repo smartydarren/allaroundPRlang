@@ -2,11 +2,11 @@
 # from Learning import decoratorsEG
 # from Learning.class_student import StudentLala
 # from Learning import func
-from Learning import codingProblems as cdp
-from Learning import lessons
+#from Learning import codingProblems as cdp
+#from allaroundPRlang.Python.basics.Learning import concept
 # decoratorsEG.printFirstName('darren')
 # decoratorsEG.printLastName('quadros')
-
+import Learning.duckdbwithpython as ddb
 
 '''
 import json
@@ -60,7 +60,13 @@ else:
     print('No honors acheived')
 
 func.myTables(56);
+
+x = lessons.recursionFactorial(5)
+print(x)
+
+
+r1 = duckdb.sql("SELECT 42 AS i")
+duckdb.sql("SELECT i * 2 AS k FROM r1").show()
+print(r1.__class__)
 '''
 
-x = lessons.recursionFactorial(5);
-print(x)

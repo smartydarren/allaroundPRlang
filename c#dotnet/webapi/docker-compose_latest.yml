@@ -1,0 +1,37 @@
+services:
+  postgres:
+    hostname: postgres
+    image: ${postgresimage}
+    container_name: postgres
+    profiles: ["active"]
+    ports:
+      - 5432:5432
+    volumes:
+      - ${postgresdbmap}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin      
+      POSTGRES_DB: dqdb
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U admin -d metastore_db "]
+    #   interval: 15s
+    #   timeout: 15s
+    #   retries: 5
+    networks:
+      - dqnetwork  
+
+networks:
+  dqnetwork:
+    driver: bridge
+
+#PLPT
+# docker compose -f ./docker-compose_latest.yml --env-file ./plpt.env build --no-cache --pull
+# docker compose -f ./docker-compose_latest.yml --env-file=./plpt.env --profile=active up -d
+# docker compose -f ./docker-compose_latest.yml --env-file=./plpt.env --profile=active down
+
+
+#OLPT
+# docker compose -f ./docker-compose_latest.yml --env-file ./olpt.env build --no-cache --pull
+# docker compose -f ./docker-compose_latest.yml --env-file=./olpt.env --profile=active up -d
+# docker compose -f ./docker-compose_latest.yml --env-file=./olpt.env --profile=active down
+# docker exec -it hive_runtime beeline -u 'jdbc:hive2://localhost:10000/'
