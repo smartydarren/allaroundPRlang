@@ -1,9 +1,19 @@
 Basics
 =======
-Variable - stores some value -- we could declare a variable and not assign a value or declare a variable and store
-a value, in both cases we do not use them, the compiler will throw a warning but will let your program run.
-
+Variable - stores some value -- we could declare a variable and not assign a value or declare a variable and store a value, in both cases we do not use them, the compiler will throw a warning but will let your program run.
+Identifier - What we call/name a value
 Expression - Evaluates to a value (x + " is weird.")
+Operator - It works on operands
+operand - The thing(s) that the operator works on
+literal - actual value
+
+single quote is used for characters and double quotes for strings
+
+dotnet framework - a common place for all libraries and is shared by all dotnet languages.
+
+alias - string with lowercase s is an alias for system.String data type, int is alias for system.int32 
+
+function vs method - A function stands by itself and its not attached to a class. else it would be called a method.
 
 Namespace - Its a logical container for related classes
 Assembly - Its a container of related namedspaces- DLL or EXE is the format
@@ -15,10 +25,11 @@ Assembly - Its a container of related namedspaces- DLL or EXE is the format
 
 -Ternary Operator Exp1? Exp2:Exp3- its needs 3 operands, If exp 1 is true then Exp2 is the final output else Exp3 is the final output
 
--DatTypes ---
+-DataTypes ---
 -The variables in C#, are categorized into the following types −
-	-Primitive/Built in types - They are the types that hold simple values. can be assigned a value directly. They are derived from the class System.ValueType e.g 	int, bit , bool, Byte, short, long, float, double, they are individual boxes holding data independently.
-	-Reference types - They are types that hold complex values, like objects The reference types do not contain the actual data stored in a variable, but they 	contain a reference to the data.
+	-Value/Primitive/Built in types- They are the types that hold simple values. can be assigned a value directly. They are derived from the class System.ValueType e.g int, bit , bool, Byte, short, long, float, double, they are individual boxes holding data independently. in this type the values are copied over from one variable to another if referenced.
+
+  -Reference types - They are types that hold complex values, like objects The reference types do not contain the actual data stored in a variable, but they contain a reference to the data.
    e.g object, dynamic, and string.
    Object is an alias for System.Object class Pointer types
 
@@ -33,8 +44,8 @@ Assembly - Its a container of related namedspaces- DLL or EXE is the format
 			Its used when we are not sure how many arguments of the same type the user would pass.
 			eg public double checkOutCart(param double[] prices){}
 
-Collections - Like arrays/lists datatypes which hold collection of variables
-you could have a fixed size arrays or a dynamic one list <LISTS>, this can expand and contract
+Collections - e.g the purpose of an array is to essentially act as a collection, a group of things.
+you could have a fixed size arrays or a dynamic one list <LISTS>, this can expand and contract.
 
 Loops - The easiest way to cycle through a collection.
 	While Loop - It will execute infinite amount of times as long as its condition remains true

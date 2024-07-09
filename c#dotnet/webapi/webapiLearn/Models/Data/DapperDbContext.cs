@@ -12,6 +12,6 @@ namespace webapiLearn.Models.Data
         {            
         }
 
-        public DbSet<User> user { get; set; }
+        public DbSet<UserCar_Model> user { get; set; }
     }
 }

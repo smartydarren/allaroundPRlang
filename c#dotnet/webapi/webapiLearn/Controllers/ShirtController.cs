@@ -35,12 +35,12 @@ namespace webapiLearn.Controllers
 
         [HttpGet]
         //[Route("/user")]
-        public async Task<ActionResult<IEnumerable<User>>> GetArticles()
+        public async Task<ActionResult<IEnumerable<UserCar_Model>>> GetArticles()
         {
             string query = "select * from dbo.user";
             
             using(var conStr = this._dapperStraightContext.CreateConnection()) {
-                var jj = await conStr.QueryAsync<User>(query);
+                var jj = await conStr.QueryAsync<UserCar_Model>(query);
                 //var jj = await _context.user.ToListAsync();
                 return jj.ToList();
             }                        
