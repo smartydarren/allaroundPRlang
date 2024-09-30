@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using webapiLearn.Models;
 using webapiLearn.Models.BssModels;
 using webapiLearn.Models.Data;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Text.Json;
 
 
 namespace webapiLearn.Controllers
@@ -393,7 +393,7 @@ and ol.""Is_Active"" = true
         }
 
         [HttpGet]
-        [Route("/stagingspecifications")]
+        [Route("stagingspecifications")]
         public async Task<List<SpecificationStaging>> GetStagingSpecificationsByProductIdForStagingPlanAndFeatures(long productsStagingId)
         {
 
@@ -427,19 +427,18 @@ pss.""Id""
 --Asignments
 ,psas.""Id""
 ,psas.""ProdSpecAssignmentId"" 
-,psvs.""Id"" ""SpecificationValueId"" 
-,psvs.""Id"" ""AssignToSpecificationValueId""
-,psas.""IsPublished"" 
-,psas.""PublishedAt"" 
+,psas.""SpecificationValueId"" 
+,psas.""AssignToSpecificationValueId""-- ""AssignToSpecificationValueId""
+,psas.""IsPublished""  
 from 
 dbo.""ProductSpecificationsStaging"" pss 
 inner join dbo.""SpecificationTypes"" st on pss.""SpecificationTypeId"" = st.""Id"" 
 inner join dbo.""SpecificationDataTypes"" sdt on sdt.""Id"" = st.""SpecificationDataTypeId""
 left join dbo.""MeasurementUnits"" mu on mu.""Id"" = pss.""MeasurementUnitId""
 --Assignments
-left join dbo.""ProductSpecificationValuesStaging"" psvs on psvs.""ProdSpecStagingId"" = pss.""Id"" 
-left join dbo.""ProductSpecificationAssignmentsStaging"" psas on (psas.""SpecificationValueId"" = psvs.""Id"" and psvs.""Id"" = psas.""AssignToSpecificationValueId"")
---left join dbo.""ProductSpecificationValues"" psv2 on psv2.""Id""  =  psa.""AssignToSpecificationValueId"" 
+left join dbo.""ProductSpecificationValuesStaging"" psvs on psvs.""ProdSpecStagingId"" = pss.""Id""
+left join dbo.""ProductSpecificationAssignmentsStaging"" psas on psas.""SpecificationValueId"" = psvs.""Id""
+left join dbo.""ProductSpecificationValuesStaging"" psvs2 on psvs2.""Id"" = psas.""AssignToSpecificationValueId"" 
 where pss.""StagingProductId"" =  @productsStagingId
 and pss.""IsActive"" = true and psvs.""IsActive"" = true
 order by pss.""Id"";  
@@ -514,5 +513,69 @@ WHERE pafcg.""ProductsStagingId"" = @productsStagingId;
 
             //https://localhost:7163/api/bss/productCatalog/bss/carrierGroups
         }
+
+        [HttpGet]
+        [Route("ProductByName")]
+        public async Task<ValidateProductNameResponse> GetDraftProductByName(string productName)
+        {
+            string query =
+@"SELECT 
+""Name"" from dbo.""ProductsStaging"" ps 
+where lower(""Name"") = lower(@productName)
+limit 1;
+";
+
+            using (var connection = _dapperStraightContext.CreateConnection())
+            {
+                string? res = await connection.QueryFirstOrDefaultAsync<string>(query, new { productName });
+                if (res != null) { 
+                return new ValidateProductNameResponse { IsValid = false };
+                }
+                else
+                {
+                    return new ValidateProductNameResponse { IsValid = true };
+                }         
+            }
+        }
+
+        [HttpGet]
+        [Route("NullTypes")]
+        public async Task<string> GetNullTypes(int id)
+        {                        
+            var ccl = await GetNullTypesDB(id);
+            var test = true;
+            string ifcond = "If condition - It has a boolean values of ";
+            string elsecond = "else condition - It has a boolean values of ";
+            string returnMessage = "";
+
+            if (!ccl && test)
+            {
+                returnMessage = string.Concat(ifcond, ccl);
+                Console.WriteLine(returnMessage);
+            }
+            else {
+                returnMessage = string.Concat(elsecond, ccl);
+                Console.WriteLine(returnMessage);
+                }
+
+            return JsonSerializer.Serialize(new { boolvalue = returnMessage });
+        }
+
+        private async Task<bool> GetNullTypesDB(int id)
+        {
+            string query =
+@"SELECT 
+coalesce(smokes,false) as smokes from dbo.nulltypes where id = @id;
+";
+
+            using (var connection = _dapperStraightContextdqdb.CreateConnection())
+            {
+                var res = await connection.QueryFirstOrDefaultAsync<bool>(query, new { id });                
+
+                return res;
+            }
+            
+        }
+
     }
 }

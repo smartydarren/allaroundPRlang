@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    loose binding example
+*@
+@{
+    @model DInventory_Models.Student
+}
+
+<div>
+    @using (Html.BeginForm("TightBindingMethod","student",FormMethod.Post))
+    {
+        @Html.TextBoxFor(e => e.StudentID) <br />
+        @Html.ValidationMessageFor(e => e.StudentID) <br />
+        @Html.TextBoxFor(e => e.StudentName)<br />
+        @Html.ValidationMessageFor(e => e.StudentName) <br />
+        @Html.TextBoxFor(e => e.StudentAddress)<br />
+        <br />
+        <input type="submit" value="Save"/>
+    }
+</div>

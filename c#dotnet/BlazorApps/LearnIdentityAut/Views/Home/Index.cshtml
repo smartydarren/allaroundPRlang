@@ -1,0 +1,75 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration configuration
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if(configuration.GetValue<bool>("NewObject:MyBooleanValue"))
+    {
+    <div class="alert alert-info" role="alert">
+    @(configuration.GetValue<string>("NewObject:BookName"))
+    </div>
+    }
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h1>If Else conditionings</h1>
+
+    @{
+        int a = 8;
+
+        a++;
+
+        if(a > 10)
+        {
+            <h1>The value of a is Greated than 10 = @a</h1>
+        } else
+        {
+            <h1>The value of a is Less than/equal to 10 = @a</h1>
+        }
+    }
+
+    <h1>Ternary Operatar Example :</h1>
+
+    @{
+        int a1 = 7;
+        int b1 = 0;
+
+        @(a1 < 5 ? b1 = 5 : b1 = 6);
+
+        <h1>The value of B is set to : @b1</h1>
+    }
+
+    <input type="button" value="click the Button" class="btn btn-danger" />
+
+    <br />
+
+    @{
+        var newBook = @ViewBag.newBook;
+        var expando = @ViewBag.expando;
+    }
+
+    <h1>@ViewBag.Title1 BookId: @newBook.BookID Author: @newBook.Author Expando:@expando.ID,@expando.Name</h1>
+    <br />
+    @{
+        var bookdata = ViewData["book1"] as BookModel;
+    }
+    <h1>@ViewData["Tile2"], @bookdata.BookID, @bookdata.Author</h1>
+
+    <div>
+        <h3>Reading connection strings________</h3>
+        <h1>@ViewBag.useGetValueMethod1</h1>
+    </div>
+    
+
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    
+</div>

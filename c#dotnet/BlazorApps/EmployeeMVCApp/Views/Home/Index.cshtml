@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="~/lib/jquery/jquery.js">
+const { ajax } = require("jquery");
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+   <h2>Hello : </h2> @ViewBag.username
+   <br />
+<label id="mylbl"></label> <br />
+<input type="text" id="textbox"/>
+<input type="button" value="Click me" onclick="BtnClick()" />
+</div>
+
+<br />
+
+<div>
+    <h2>EmpID</h2> - <h2 id="EmpID"></h2>
+    <h2>EmpName</h2>-<h2 id="EmpName"></h2>
+    
+</div>
+
+<div>
+    <form>
+        <input type="text" id="EmployeeID" placeholder="id" />
+        <br />         <br />
+        <input type="text" id="EmployeeName" placeholder="Name" />
+        <br />         <br />
+        <input type="text" id="AddressID" placeholder="AddressID" />
+        <br />
+        <input type="button" onclick="BtnClickPost()" value="SubmitEmployee" />
+    </form>
+</div>
+
+
+<script>
+
+    function BtnClick(){
+        var value = $("#textbox").val();
+        $("#mylbl").text(value);
+  @*-- using ajax Calls --> *@
+        $.ajax({
+            url:"/Home/Getemployees",
+            method:"GET",
+            success: function(empData){
+                console.log(empData);
+
+            $("#EmpID").text(empData.employeeID);
+            $("#EmpName").text(empData.employeeName);
+                
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    }
+
+    function BtnClickPost(){
+
+        var id =  $("#EmployeeID").val();
+        var name =  $("#EmployeeName").val();
+        var addressid =  $("#AddressID").val();
+
+        var empObj = {
+            EmployeeID : id,
+            EmployeeName : name,
+            AddressID : addressid
+        };
+        
+        //alert(empObj.EmployeeID);
+        sendDataAjax(empObj);
+    }
+
+    function sendDataAjax(obj){
+        $.ajax({
+            url:"/Home/Addemployees",
+            method:"POST",
+            data : obj,
+            success: function(data){
+                alert(data);
+                //console.log(Data);
+        },
+        error:function(err){
+                console.log(err);
+            }       
+        })
+    }
+
+</script>

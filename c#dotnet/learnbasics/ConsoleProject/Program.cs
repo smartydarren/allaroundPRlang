@@ -1,7 +1,13 @@
-﻿using ConsoleProject.LinqLearn;
+﻿// using declaration
+using System.Data;
+using System.Runtime.CompilerServices;
+using System.Transactions;
+using ConsoleAppLearning.LearnConcepts;
+using ConsoleProject.Models;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.IdentityModel.Tokens;
 
- // using declaration
-namespace ConsoleProject; // a namespace - used for organisation simply to group classes
+namespace ConsoleProject; // a namespace - used to simply group classes
 
 // namespace -> classes -> members -> method -> statements
 public class Program // as class - has members (such as a properties and method)
@@ -9,19 +15,26 @@ public class Program // as class - has members (such as a properties and method)
   //Console.WriteLine(); // this code wont work as it needs to be in a method.
   static void Main(string[] args) // a method - contains a block of code
   {
-    //Program p = new Program();
+    Program p = new Program();
     //p.dataTypes();
     //Console.WriteLine(args[0]); //dotnet run tacos - this will print tacos
     //Person person = new Person { FirstName = "Darren", LastName = "Q-Classes" };
     //System.Console.WriteLine(person.GetFullName());
     //p.linq();
-    var ll = new linqlearn();
-    ll.printCategories1();
-  }
+    //var ll = new linqlearn();
+    //ll.printCategories1();    
+    //Person p1 = new Person("Darren","Quadros");
+    //string fullName = p1.GetFullName();
+    //Console.WriteLine(fullName);
 
+    //p.classesAndObjects();
+    CollectionsEg ce = new CollectionsEg();
+    ce.HashTable();
+  
+}   
 
   void basicsAndVariables()
-  {
+  {    
     System.Console.WriteLine("Hello, Darren"); // a statement
     Console.Write(7.58);
     Console.WriteLine("Hello");
@@ -38,7 +51,7 @@ public class Program // as class - has members (such as a properties and method)
     System.Console.WriteLine($"Its a null : {declareWithNull}");
 
   }
-  void dataTypes()
+  public void dataTypes()
   {
     //Value Types - [Simple Types, enum types, struct types and nullable]
     char singleCharacter = 'c';
@@ -47,8 +60,9 @@ public class Program // as class - has members (such as a properties and method)
     bool boolDtype = true;
     int valueTypeA = 4;
     Int32 valueTypeB = valueTypeA; // in value types the value will be copied not referenced.
+    System.Console.WriteLine($"valueTypeA = {valueTypeB}");
     valueTypeB = 7;
-    System.Console.WriteLine($"varA = {valueTypeA} & varB = {valueTypeB}");
+    System.Console.WriteLine($"valueTypeA = {valueTypeA} & valueTypeB = {valueTypeB}");
     double dec2 = Math.Round(10.556, 3);
     char asciTable = (char)61; // = symbol as per Ascii table
 
@@ -64,25 +78,7 @@ public class Program // as class - has members (such as a properties and method)
     string myName = "Hello my name is Darren     Aislinn  / 	e";
     string[] splitString = myName.Split("/", StringSplitOptions.RemoveEmptyEntries);
     Console.WriteLine(splitString[0]);
-  }
-
-  public void switchStatements()
-  {
-    string name = "Aislinn";
-    switch (name)
-    {
-      case "Darren":
-        Console.WriteLine("cased on Darren");
-        break;
-      case "Aislinn":
-        System.Console.WriteLine("cased on Aislinn");
-        break;
-      default:
-        Console.WriteLine("other cased");
-        break;
-    }
-  }
-
+  }  
   public void loops()
   {
     //while loop
@@ -186,13 +182,17 @@ public class Program // as class - has members (such as a properties and method)
       }
     }
     List<int> myList = new List<int> {10,20,30};
-    var newlist = myList.Append(45);
+    var newlist = myList.Append(45);    
+
     System.Console.WriteLine(newlist.ElementAt(3));
     if(myList.SequenceEqual(newlist)){
       System.Console.WriteLine("true");
     }else{
       System.Console.WriteLine("List do not match");
     }
+
+    var toArray = myList.ToArray<int>();
+    Console.WriteLine($"Converted list to Array - {toArray[0]}");
 
     List<List<int>> studentGrades = new List<List<int>>{
       new List<int>{1,4,3,6},
@@ -209,12 +209,50 @@ public class Program // as class - has members (such as a properties and method)
       Console.WriteLine();
     }
   }
-
   public void linq(){
     int[] numbers = { 2, 3, 4, 5 };
     var squaredNumbers = numbers.Select(x => x * x);
     Console.WriteLine(string.Join(" ", squaredNumbers));
   }
+  public void operators(){    
+    Console.WriteLine("Enter a number");
+    int myNumber =  Int32.Parse(Console.ReadLine());
+    if (!(myNumber > 12)){
+      Console.WriteLine($"If Clause - {myNumber}");
+    }else{
+      Console.WriteLine($"Else clause - {myNumber}");
+    }
+  }
+  public void switchStatements(){
+    Console.WriteLine("Enter your age for drinking");
+    int age =  Int32.Parse(Console.ReadLine());    
+    switch(age){
+      case <= 0:
+        Console.WriteLine("Input your correct age!");
+        //switchStatements();
+        return; //return from this and outer code will never run.       
+      case <= 18:
+        Console.WriteLine("you are under age!");
+        break;
+      case <= 45:
+        Console.WriteLine("you are at your legal age!");
+        break;
+      case <= 60:
+        Console.WriteLine("you are at your legal age! but take care !");
+        break;
+      default:        
+        Console.WriteLine("you are too old! consume limited drinks!");
+        break;
+    }
+    Console.WriteLine("outside of switch !");
+  }
+  public void classesAndObjects(){
+
+    DataForTesting DataForTesting = new();
+    DataForTesting.PrintUserType();
+
+  }
+
 }
 
 

@@ -1,0 +1,39 @@
+﻿@using IdentityProject.Models.ViewModels.DirectDatabase
+@model IEnumerable<CityStateCountryViewModel>
+
+
+@{
+    Layout = null;
+    var cityVar = Model.OrderByDescending(c => c.CityId);
+    ViewData["Title"] = "ViewCities";
+}
+
+<h1>CityList</h1>
+
+<p>
+    <a asp-action="">Add New City</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>City ID</th>
+            <th>City</th>
+            <th>CountryID</th>
+            <th>CountryName</th>
+        </tr>
+        @foreach (var city in cityVar)
+        {
+            <tr>                
+                <td>@city.CityId</td>
+                <td>@city.CityName</td>
+                <td>@city.CountryId</td>
+                <td>@city.Countryname</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </thead>
+</table>

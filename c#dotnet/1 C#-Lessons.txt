@@ -67,14 +67,13 @@ string interpolation = Allows to insert variables or values into a string litera
 				{} are placeholders
 				e.g Console.writeline($"Hello how are you {FirstName}")
 
-Lifecycle of a class - The point from Start of Excution upto end of execution of the class.
+Lifecycle of a class - The point from Start of Execution upto end of execution of the class.
 
 
 Entity -Anything that is associated with a set of attribute (living/non living) in DBMS terminology
         e.g Phone is a non living object [Attibutes are : Manufacturer, Color, Model No, Price, Features etc]
 
-Value - Its an implicit variable that provides access to the value assigned by the user. the data will also be similar
-        to that of the assinged value/property/indexer
+Value - Its an implicit variable that provides access to the value assigned by the user. the data will also be similar to that of the assinged value/property/indexer
 
 Type - What is a Type - A class/structure/interface is a type, all user defined type
 
@@ -84,7 +83,6 @@ Stack Memory - All the value types are stored here - FIFO rules
 Heap - Managed memory by the PR language to accomodate big data types likes classes, strings etc- The object still remains on the heap memory till the time the Garbage Collector kicks in clears all with no references, thats why heap is expensive.
 
 UML - unified modified langauage - its used to create some diagram in computer science e.g class diagram, its attributs and its methods
-
 
 Scalar - Like Integer, a single value which is comparable
 
@@ -99,19 +97,30 @@ Statements and Expressions
 Comments
 
 
-Pillars of oops
----------
-
-	-Encapsulation :
+OOPS
+============
+-Encapsulation :
 In object oriented programming encapsulation is used to the keep the data safe from other objects, its used for protection purpose. Encapsulation is implemented by using access specifiers. e.g A variable can be marked as private, then we could create a private function to set and get the values from the variable and also write some validation code, here the class wraps/encapsulates the variable and function and exposes it via a constructor-parameter. 
 
 	-Properties in C# - its a type of encapsulation, We should never expose public fields e.g Name field should not be NULL, As a result we have better control on what gets assigned and returned from the field.
  use get set methods or Using properties we do not have use get and set which are lengthy lines of code. 	 
 
 -Abstraction :
-Lets take a Person, we are just interested in FirstName, LastName etc and keep the rest of the information away, which means abtracting away what is not required.
-secondly abstract classes can have properties and methods with access specifier, plus it can have abstract and not abstract methods, but the child class inheriting it should provide the implementation which is abstract specified with the access specifier equal to or lower than it. In short Im forcing the other programmer inheriting my class to provide the implementation for it.
+You can prevent from creating an object of a class by making it abstract, instead only child classes should be created.
 
+	Abstract classes cannot be instantiated
+	Abstract classes can only be used a a base class.
+	Abstract classes cannot be sealed
+	A non abstract class derived from an Abstract Class must provide implementation for all Inherited abstract members.
+	Abstract classes can have both Abstract and Non Abstract method, but the child class has to mandatory implement the logic
+        of the abstract methods and then the non abstract methods will be available for consumption
+
+-Inherit and override methods : make the method as virtual in base class to change the implementation in child classes.
+
+
+-Polymorphism :
+create a base class and inherit from it, then add a list of objects to the base type it will be accepted.
+e.g users - Teacher, students they all inherit and do different things, however they are all user type.
 
 -Structures Vs Classes
 Initial Structures came in Procedural languages, similar to class its a User Defined Data Type and comes under value type.
@@ -137,12 +146,11 @@ Note: For fields in structures we need to initialiaze the field in the construct
 9. Structure and Classes both can implement interfaces. but struct cannot inherit from another struct or class.
 10. Structures cannot have destructors.
 
--Interfaces
+-Interfaces :
 Its a user defined type, similar to a class which can have properties, Methods, delegates & events.
 Difference :  But interface can only have declaration, not implementation, not even instance fields.
 Interfaces can inherit from other interfaces at a time, but it cannot inheret from an abstract class.
 	Note: Every  method of an interface in the chain should be implemented by the class(Mandatory)
-Note: A class Or Structure can inherit from a class and more that one Iterface at a time.
 We cannot create an object of an interface, however an interface reference variable can point to a derived class object.
 The default scope of the members of an interface is Public, it does not allow explicit access modifiers.
 Override modifier is not required out here like Abstract classes
@@ -153,19 +161,10 @@ If method names are the same in Both the Interfaces, we will have to explicity c
 	When a class explicitly implements an interface member, the interface member can no longer be accessed throug the class reference variable, but only through Interface reference variable or we will have to TypeCast it to required Interface.
 	We can even have a combination of 1 implicit Interface member and 1 or N explicit Interface Methods so that the Class reference Variable can call it.
 
--Abstract Classes/Methods
-	Abstract classes cannot be instantiated
-	Abstract classes can only be used a a base class.
-	Abstract classes cannot be sealed
-	A non abstract class derived from an Abstract Class must provide implementation for all Inherited abstract members.
-	Abstract classes can have both Abstract and Non Abstract method, but the child class has to mandatory implement the logic
-        of the abstract methods and then the non abstract methods will be available for consumption
-
-
 
 1. Classes & Objects
 ===================
-Class is a group of related methods and variables also called blueprint(specification of what the class is).
+Class is a group of related variables and methods also called blueprint(specification of what the class is).
 its actually a plan, just like a plan of your house, without which you cannot create a house
 Then we construct the house and live in it...similiarly in programming we create an object in the memory basis the class.
 e.g a book class can have attribures like author, title and no of pages
@@ -176,16 +175,6 @@ Target-Typed new : Beginning with C# 9.0, constructor invocation expressions are
 
 To consume a class, one must create an object of it in the memory
 e.g int = 100 is wrong | int i = 100 is correct
-
-It is a container which has
-	Data/Fields - Attributes, its the state of the application
-	Methods/Behaviour - Also called Functions, it exhibits Behaviour, they do things for us
-
-Object - its an instance of a class that resides in the memory,
-e.g class person has data/fields - age, name etc and methods walk(), talk(), 
-however an object of this is John, Mary, Scott
-
-Its a building block of a software application
 
 The default scope of a member of a class is Private
 
@@ -323,7 +312,6 @@ Indexers
 ===========
 Its a member of a class and the members of a class starts behaving like a virtual arrays
 Even index is something like a property, by the attributes needs to be used with an index number
-
 
 
 

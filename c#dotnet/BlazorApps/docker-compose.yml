@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  learnwebapi:
+    container_name: learnwebapi_cont    
+    image: ${DOCKER_REGISTRY-}learnwebapi:latest
+    build:
+      context: .
+      dockerfile: LearnWebApi/Dockerfile
+    ports:
+    - "7182:80"
+    - "7183:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS=https : https://+;http://+
+      ASPNETCORE_HTTPS_PORT: "7183"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: "relo@2022"
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /app/aspnetapp.pfx

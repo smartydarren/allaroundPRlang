@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BookModel>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to Book Store</h1>
+        <p class="lead text-muted">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <a href=# class="btn btn-primary my-2">Search Books</a>
+    </div>
+</section>
+
+<div class="container">
+    <h3>All books</h3>
+    <div class="row">
+        @foreach(var book in Model)
+        {
+        <div class="col-md-4">
+            <partial name=_bookThumbnail model="@book" />
+            @*<div class="card mb-4 shadow-sm">
+                <img src="/images/Book.jpg" class="card-img-top" alt="MyLogo">
+                <div class="card-body">
+                    <h3 class="card-title">@book.BookTitle - @book.Language</h3>
+                    <p class="card-text">Short description of Book....</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a asp-controller=Book asp-action=GetBook asp-route-bookid=@book.BookID class="btn btn-sm btn-outline-secondary">View Details</a>
+                        </div>
+                        <small class="text-muted">@book.Author</small>
+                    </div>
+                </div>
+            </div>*@
+        </div>    
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            //alert("Books Page Loaded");
+        });
+    </script>
+}
+
+@section myheader{
+    <h1> Im rendering a section from my Books Home view to the _layout view </h1>
+}
+
+
+
+
+

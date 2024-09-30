@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    loose binding example
+*@
+@{
+}
+
+
+<div>
+    @using (Html.BeginForm("FormMethod","student",FormMethod.Post))
+    {
+        @Html.TextBox("StudentID") <br />
+        @Html.ValidationMessage("StudentID") <br />
+        @Html.TextBox("StudentName")<br />
+        @Html.ValidationMessage("StudentName") <br />
+        @Html.TextBox("StudentAddress")<br />
+        <br />
+        <input type="submit" value="Save"/>
+    }
+</div>

@@ -1,0 +1,91 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model BookModel
+    ViewData["Title"] = "Add Book";
+}
+
+<div class="container">
+    <h3>Add New Book</h3>
+
+    @if (ViewBag.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Record Added Successfully!</strong> <br />
+            Click <a asp-controller="Book" asp-action="GetBook" asp-route-bookid=@ViewBag.ID>here</a> if you wish to edit .
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Book" asp-action="AddNewBook">
+
+        <div class="form-group">
+            <label asp-for=BookTitle></label>
+            <input asp-for=BookTitle class="form-control" />
+            <span asp-validation-for="BookTitle" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for=Author></label>
+            <input asp-for=Author class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for=Description></label>
+            <textarea asp-for=Description class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for=TotalPages></label>
+            <input asp-for=TotalPages class="form-control" required />
+            <span asp-validation-for="TotalPages" class="text-danger"></span>
+        </div>
+
+        @*<div class="form-group">
+            <label asp-for=Language></label>
+            <select asp-for=Language class="form-control" required>
+            <option value="">please choose a language</option>
+            <option value ="Hindi">Kya Bhai - Hindi</option>
+            <option value="English">Hello English</option>
+            <option value="Marathi">Me Marathi</option>
+            </select>
+            <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+            <label asp-for=Language></label>
+            <select asp-for=Language class="form-control" required asp-items="ViewBag.Language">
+            <option value="">please choose a language</option>
+            </select>
+            <span asp-validation-for="Language" class="text-danger"></span>
+            </div>*@
+
+        <div class="form-group">
+            <label asp-for=LanguageIDRef>Language</label>
+            <select asp-for=LanguageIDRef class="form-control" required asp-items="ViewBag.Language">
+                <option value="">Select Language</option>
+            </select>
+            <span asp-validation-for="LanguageIDRef" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for=CoverPhoto></label>
+            <div class="input-group mb-3">
+                <input asp-for="CoverPhoto" class="form-control" id="inputGroupFile02">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            </div>
+            <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Add Book" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+

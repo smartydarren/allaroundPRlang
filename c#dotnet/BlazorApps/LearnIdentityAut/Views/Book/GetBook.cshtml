@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model BookModel
+     ViewData["Title"] = Model.BookTitle + " Book";
+}
+
+<h1>Get Book by ID : @Model.BookID </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item"><span class="font-weight-bold">BookID - </span>@Model.BookID</li>
+                <li class="list-group-item"><span class="font-weight-bold">Author - </span>@Model.Author</li>
+                <li class="list-group-item"><span class="font-weight-bold">BookTitle - </span>@Model.BookTitle</li>
+                <li class="list-group-item"><span class="font-weight-bold">Category - </span>@Model.Category</li>
+                <li class="list-group-item"><span class="font-weight-bold">Desc - </span>@Model.Description</li>
+                <li class="list-group-item"><span class="font-weight-bold">TTLPages - </span>@Model.TotalPages</li>
+                <li class="list-group-item"><span class="font-weight-bold">Language - </span>@Model.Language</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h1>Author : @Model.Author</h1>
+
+        </div>
+    </div>
+</div>
+
+
