@@ -1,13 +1,24 @@
 ﻿
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Common;
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualBasic;
+using Npgsql.Replication;
 
 namespace ConsoleProject.Models
 {
+  internal enum FoodILike
+  {
+    ramen, noodles, friedrice, soups
+  }
   public abstract class Users
   {
     public int Id { get; set; }
     public string? Email { get; set; }
-    public string? Password { get; set; }
+    public string Password { get; set; } = string.Empty;
+    public readonly string Org;
     public string? FullName
     {
       get
@@ -19,8 +30,20 @@ namespace ConsoleProject.Models
     public string? LastName { get; set; }
 
     public Users()
-    {      
+    {
     }
+
+    public Users(string org)
+    {
+      this.Org = org;
+    }
+
+    ~Users()
+    {
+      Console.WriteLine("Destructing users class");
+    }
+
+
     public override string ToString()
     {
       return base.ToString();
@@ -35,7 +58,7 @@ namespace ConsoleProject.Models
     {
       string res = whoAmI();
 
-      return string.Concat(this.FullName, "-", res);
+      return string.Concat(this.FullName, "-", Org, res);
     }
 
     public virtual string whoAmI()
@@ -46,15 +69,33 @@ namespace ConsoleProject.Models
   }
 
   public class User : Users
-  {    
+  {
+    public User()
+    {
+      Console.WriteLine("Constructing user class");
+    }
+    ~User()
+    {
+      Console.WriteLine("Destructing user class");
+    }
+    public User(string org) : base(org)
+    {
+      // other stuff here
+      Console.WriteLine($"printing org - {this.Org}");
+    }
     public override string whoAmI()
     {
       return "I am a Base User";
     }
+
   }
 
   public class Student : Users
-  {   
+  {
+    ~Student()
+    {
+      Console.WriteLine("Destructing student class");
+    }
     public override string whoAmI()
     {
       return "I am a Student";
@@ -63,7 +104,7 @@ namespace ConsoleProject.Models
 
   public class Teacher : Users
   {
-    
+
     public override string whoAmI()
     {
       return "I am a Teacher";
@@ -73,7 +114,7 @@ namespace ConsoleProject.Models
 
   public class DataForTesting
   {
-    public List<Users> users { get; set; } = new List<Users>();    
+    public List<Users> users { get; set; } = new List<Users>();
 
     public DataForTesting()
     {
@@ -121,6 +162,10 @@ namespace ConsoleProject.Models
         Console.WriteLine("-----Next User---------");
       }
 
+      string foodilike = "soups";
+      var test = Enum.IsDefined(typeof(FoodILike), foodilike.ToLower());
+      Console.WriteLine(test);
+
     }
 
     public void PrintUserType()
@@ -134,4 +179,143 @@ namespace ConsoleProject.Models
 
   }
 
-}
+  public struct StructUser
+  {
+    public string Name { get; set; }
+
+
+    public void changeUser(StructUser su)
+    {
+      Console.WriteLine(su.Name = "structuser");
+    }
+
+    /*
+    --value type its pass by copy--------
+    StructUser u = new StructUser();
+    u.Name = "darren";
+    u.changeUser(u);
+    Console.WriteLine(u.Name);
+    */
+  }
+
+  public interface IFood
+  {
+    public void FoodColor(string color)
+    {
+      Console.WriteLine("Default Color is White");
+    }
+    void FoodQuantity(int qty)
+    {
+      qty = 1;
+    }
+  }
+
+  public class Biryani : IFood
+  {
+    public void FoodColor(string color)
+    {
+      Console.WriteLine($"Default Color is {color}");
+    }
+  }
+
+  public class Pulao : IFood
+  {
+    public void FoodColor(string color)
+    {
+      Console.WriteLine($"Default Color is {color}");
+    }
+  }
+
+  public delegate void WriteToConsole();
+
+  public class DelegateEg
+  {
+    WriteToConsole write;
+
+    public void WriteMessageToConsole()
+    {
+      Console.WriteLine("Hello from function");
+    }
+
+    private void CallDelegate()
+    {
+      write = () =>
+      {
+        Console.WriteLine("Hello from lamda");
+      };
+      write += WriteMessageToConsole;
+      write();
+
+    }
+
+  }
+  public class EventEg
+  {
+    public event Action OnShouting;
+
+    internal void Shout()
+    {
+      OnShouting?.Invoke();
+    }
+  }
+
+  public class ShouldAtKids
+  {
+    public ShouldAtKids(EventEg eventEg)
+    {
+      eventEg.OnShouting += () =>
+      {
+        Console.WriteLine("Shouting at kids");
+      };
+
+    }
+
+    //EventEg eeg = new EventEg();
+    //ShouldAtKids she = new ShouldAtKids(eeg);
+    //eeg.Shout();
+  }
+
+  public class GenericEg<T> where T : class
+  {
+
+    public T TestFunction(T par)
+    {
+      Console.WriteLine(par);
+      return par;
+    }
+  }
+
+  public class SingletonPattern
+  {
+    private SingletonPattern instance { get; set; }
+    public static string Name { get; set; } = "Darren";
+    private SingletonPattern()
+    {
+      this.instance = new SingletonPattern();
+    }
+
+    public static SingletonPattern Rrr()
+    {
+      return new SingletonPattern();
+    }
+  }
+
+  public class ReflectionEg
+  {
+    public int MyProperty { get; set; }
+    public void Message()
+    {
+      Debug.Assert(MyProperty > 0);
+      Console.WriteLine("Hello");
+    }
+    /*  ReflectionEg re = new ReflectionEg();
+     MethodInfo myFunctionMethodInfo = typeof(ReflectionEg).GetMethod("Message");
+     myFunctionMethodInfo.Invoke(re, new object[] { }); */
+  }
+
+
+
+
+}// namespace closing
+
+

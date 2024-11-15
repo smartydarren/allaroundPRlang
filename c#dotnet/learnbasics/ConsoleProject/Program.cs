@@ -1,19 +1,16 @@
 ﻿// using declaration
 using System.Data;
-using System.Runtime.CompilerServices;
-using System.Transactions;
-using ConsoleAppLearning.LearnConcepts;
 using ConsoleProject.Models;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Microsoft.IdentityModel.Tokens;
+using System.Globalization;
+using LoggingNamespace;
 
 namespace ConsoleProject; // a namespace - used to simply group classes
 
 // namespace -> classes -> members -> method -> statements
-public class Program // as class - has members (such as a properties and method)
+internal class Program // as class - has members (such as a properties and method)
 {
   //Console.WriteLine(); // this code wont work as it needs to be in a method.
-  static void Main(string[] args) // a method - contains a block of code
+  static async Task Main(string[] args) // a method - contains a block of code
   {
     Program p = new Program();
     //p.dataTypes();
@@ -28,13 +25,14 @@ public class Program // as class - has members (such as a properties and method)
     //Console.WriteLine(fullName);
 
     //p.classesAndObjects();
-    CollectionsEg ce = new CollectionsEg();
-    ce.HashTable();
-  
-}   
+    NloggerClass nloggerClass = new NloggerClass();
+
+
+  }
+
 
   void basicsAndVariables()
-  {    
+  {
     System.Console.WriteLine("Hello, Darren"); // a statement
     Console.Write(7.58);
     Console.WriteLine("Hello");
@@ -78,7 +76,7 @@ public class Program // as class - has members (such as a properties and method)
     string myName = "Hello my name is Darren     Aislinn  / 	e";
     string[] splitString = myName.Split("/", StringSplitOptions.RemoveEmptyEntries);
     Console.WriteLine(splitString[0]);
-  }  
+  }
   public void loops()
   {
     //while loop
@@ -125,7 +123,8 @@ public class Program // as class - has members (such as a properties and method)
       w1--;
     }
   }
-  public void arrays(){
+  public void arrays()
+  {
     int[] grades = new int[6];
     for (int i = 0; i < grades.Length; i++)
     {
@@ -134,60 +133,66 @@ public class Program // as class - has members (such as a properties and method)
 
     foreach (var item in grades)
     {
-      System.Console.Write($"{item} ");      
+      System.Console.Write($"{item} ");
     }
 
-     foreach (var grade in grades)
+    foreach (var grade in grades)
     {
-      if(grade == 3){
+      if (grade == 3)
+      {
         System.Console.WriteLine($"found {grade} in the list");
-        break;    
-      }else{
+        break;
+      }
+      else
+      {
         System.Console.WriteLine("Not Found");
-      }      
+      }
     }
-    
-    int[,] twoDArray = new int[3,2]; 
-      twoDArray[0,0] = 11;
-      twoDArray[0,1] = 12;
-      twoDArray[1,0] = 21;
-      twoDArray[1,1] = 22;      
-    
+
+    int[,] twoDArray = new int[3, 2];
+    twoDArray[0, 0] = 11;
+    twoDArray[0, 1] = 12;
+    twoDArray[1, 0] = 21;
+    twoDArray[1, 1] = 22;
+
     int[,] twoDArraysimple = {
       {11,12},{21,22},{31,32}
     };
 
     System.Console.WriteLine(twoDArraysimple.GetLength(1));
-    
-    for (int i =0; i < twoDArraysimple.GetLength(0); i++)
+
+    for (int i = 0; i < twoDArraysimple.GetLength(0); i++)
     {
       for (int j = 0; j < twoDArraysimple.GetLength(1); j++)
       {
-        System.Console.WriteLine($"2D Array at [{i}],[{j}] is  {twoDArraysimple[i,j]}");
+        System.Console.WriteLine($"2D Array at [{i}],[{j}] is  {twoDArraysimple[i, j]}");
       }
     }
 
     int[][] jaggedArray = {
-      [11,12,13] 
-      ,new int[] {21,22} 
+      [11,12,13]
+      ,new int[] {21,22}
       ,new int[] {31,32,33}
     };
     System.Console.WriteLine(jaggedArray[0][1]);
     System.Console.WriteLine(jaggedArray[1].Length);
-    for (int i =0; i < jaggedArray.GetLength(0); i++)
+    for (int i = 0; i < jaggedArray.GetLength(0); i++)
     {
       for (int j = 0; j < jaggedArray[i].Length; j++)
       {
         System.Console.WriteLine($"jagged Array at [{i}],[{j}] is {jaggedArray[i][j]}");
       }
     }
-    List<int> myList = new List<int> {10,20,30};
-    var newlist = myList.Append(45);    
+    List<int> myList = new List<int> { 10, 20, 30 };
+    var newlist = myList.Append(45);
 
     System.Console.WriteLine(newlist.ElementAt(3));
-    if(myList.SequenceEqual(newlist)){
+    if (myList.SequenceEqual(newlist))
+    {
       System.Console.WriteLine("true");
-    }else{
+    }
+    else
+    {
       System.Console.WriteLine("List do not match");
     }
 
@@ -203,30 +208,37 @@ public class Program // as class - has members (such as a properties and method)
     {
       sGrades.Sort();
       foreach (int grade in sGrades)
-      {        
+      {
         System.Console.Write($"{grade} \t");
       }
       Console.WriteLine();
     }
   }
-  public void linq(){
+  public void linq()
+  {
     int[] numbers = { 2, 3, 4, 5 };
     var squaredNumbers = numbers.Select(x => x * x);
     Console.WriteLine(string.Join(" ", squaredNumbers));
   }
-  public void operators(){    
+  public void operators()
+  {
     Console.WriteLine("Enter a number");
-    int myNumber =  Int32.Parse(Console.ReadLine());
-    if (!(myNumber > 12)){
+    int myNumber = Int32.Parse(Console.ReadLine());
+    if (!(myNumber > 12))
+    {
       Console.WriteLine($"If Clause - {myNumber}");
-    }else{
+    }
+    else
+    {
       Console.WriteLine($"Else clause - {myNumber}");
     }
   }
-  public void switchStatements(){
+  public void switchStatements()
+  {
     Console.WriteLine("Enter your age for drinking");
-    int age =  Int32.Parse(Console.ReadLine());    
-    switch(age){
+    int age = Int32.Parse(Console.ReadLine());
+    switch (age)
+    {
       case <= 0:
         Console.WriteLine("Input your correct age!");
         //switchStatements();
@@ -240,19 +252,71 @@ public class Program // as class - has members (such as a properties and method)
       case <= 60:
         Console.WriteLine("you are at your legal age! but take care !");
         break;
-      default:        
+      default:
         Console.WriteLine("you are too old! consume limited drinks!");
         break;
     }
     Console.WriteLine("outside of switch !");
   }
-  public void classesAndObjects(){
+  public void classesAndObjects()
+  {
 
     DataForTesting DataForTesting = new();
     DataForTesting.PrintUserType();
 
   }
+  public void constantsReadOnly()
+  {
 
+    const int t1 = 52;
+    Console.WriteLine(t1);
+    Users u1 = new User("ssspl");
+  }
+  public void Enumss(FoodILike foodI)
+  {
+    Console.WriteLine(typeof(FoodILike));
+    Console.WriteLine(foodI);
+    var frice = FoodILike.friedrice;
+    Console.WriteLine((int)frice);
+    Console.WriteLine(Enum.Parse<FoodILike>("soups"));
+
+    foreach (FoodILike f1 in Enum.GetValues(typeof(FoodILike)))
+    {
+      Console.WriteLine($"---{f1}");
+    }
+
+  }
+  public int RecurssionTest(int number)
+  {
+    if (number < 5)
+    {
+      Console.WriteLine($"Number is : {number}");
+      return RecurssionTest(number + 1);
+    }
+    else
+    {
+      Console.WriteLine($"Else Number is : {number}");
+      return number;
+    }
+  }
+
+  public void StringFormat()
+  {
+    DateTime date1 = new DateTime(2019, 11, 11);
+    date1 = DateTime.Now;
+
+    // Converts the object to string 
+    string s1 = string.Format("{0:f}", date1);
+    Console.WriteLine("formattedDateTime : {0}", s1);
+
+    CultureInfo currentCulture = CultureInfo.CurrentCulture;
+    Console.WriteLine(currentCulture);
+
+    CultureInfo spanishCulture = new CultureInfo("es-ES");
+    String formattedDateInSpanish = date1.ToString("D", spanishCulture);
+    Console.WriteLine("formattedDateInSpanish : {0}", formattedDateInSpanish);
+
+  }
 }
 
 

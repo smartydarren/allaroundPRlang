@@ -1,8 +1,5 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.JSInterop.Implementation;
-using System;
 using webapiLearn.Models;
 using webapiLearn.Models.Data;
 
@@ -38,12 +35,20 @@ namespace webapiLearn.Controllers
         public async Task<ActionResult<IEnumerable<UserCar_Model>>> GetArticles()
         {
             string query = "select * from dbo.user";
-            
-            using(var conStr = this._dapperStraightContext.CreateConnection()) {
+
+            using (var conStr = this._dapperStraightContext.CreateConnection()) {
                 var jj = await conStr.QueryAsync<UserCar_Model>(query);
                 //var jj = await _context.user.ToListAsync();
                 return jj.ToList();
-            }                        
+            }
+        }
+
+        [HttpGet("enumtest/{foodI}")]        
+        public string GetEnum(FoodILike foodI)
+        {
+            //FoodILike f1 =  Enum.Parse<FoodILike>(foodI);
+            return foodI.ToString();
+            //return "soups";
         }
 
         [HttpPost]

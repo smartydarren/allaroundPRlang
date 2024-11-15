@@ -1,5 +1,8 @@
+https://www.youtube.com/playlist?list=PLzDRvYVwl53t2GGC4rV_AmH7vSvSqjVmz
+
 Basics
 =======
+Refactoring - The act of rewriting or reorganising code, Its a constant never-ending process.
 Variable - stores some value -- we could declare a variable and not assign a value or declare a variable and store a value, in both cases we do not use them, the compiler will throw a warning but will let your program run.
 Identifier - What we call/name a value
 Expression - Evaluates to a value (x + " is weird.")
@@ -36,7 +39,7 @@ Assembly - Its a container of related namedspaces- DLL or EXE is the format
 
 -Methods - Performs a section of code whenever called/invoked. Benefits - it can be resued without writing multiple times.
 
--attributes = In computing its a metadata about data
+-attributes = In computing it adds extra metadata and then we can do something on it.
 
 -return keyword : It returns data back to the place where a method is invoked.
 
@@ -61,7 +64,9 @@ Null means the object does not reference anything in the Memory.
 
 conditional operators = shortform of the IF condition (condition) ? x : y
 
-Interpolation = In short, interpolation is a process of determining the unknown values that lie in between the known data points
+composite formatting = "App Started {start} {end},10:45, 11:15" You log the variables separately so you can access them more easily whereas in interpolation you log only a single string - NLOG they use composite formatting.
+
+string Interpolation = In short, interpolation is a process of determining the unknown values that lie in between the known data points
 string interpolation = Allows to insert variables or values into a string literal
 			     Precede a string literal with a $ symbol
 				{} are placeholders
@@ -86,6 +91,14 @@ UML - unified modified langauage - its used to create some diagram in computer s
 
 Scalar - Like Integer, a single value which is comparable
 
+Delegate - Lets you store a function within a variable and use it as a parameter
+
+Events - It has publisher and sucscribers(listeners)
+
+Reflection - Dynamically inspect and execute your code rather than creating objects and accessing their function.
+
+Async code - It still runs on a single thread, these are basically tasks which can run simultaneously and be awaited.
+
 Bare Minimum Program Structure
 ======================
 Namespace declaration
@@ -102,8 +115,7 @@ OOPS
 -Encapsulation :
 In object oriented programming encapsulation is used to the keep the data safe from other objects, its used for protection purpose. Encapsulation is implemented by using access specifiers. e.g A variable can be marked as private, then we could create a private function to set and get the values from the variable and also write some validation code, here the class wraps/encapsulates the variable and function and exposes it via a constructor-parameter. 
 
-	-Properties in C# - its a type of encapsulation, We should never expose public fields e.g Name field should not be NULL, As a result we have better control on what gets assigned and returned from the field.
- use get set methods or Using properties we do not have use get and set which are lengthy lines of code. 	 
+	-Properties in C# - its a type of encapsulation, We should never expose public fields e.g Name field should not be NULL, its a mix of functional and a variable 
 
 -Abstraction :
 You can prevent from creating an object of a class by making it abstract, instead only child classes should be created.
@@ -326,7 +338,7 @@ The logic can be written directly in the main method.
 Its uses where few lines of code is required to be implemented by another programmer.
 Lamda expression "=>" was introduced in .net 3.0 to simplify the calling delegates.
 
-3 Types of Generic Delecates :
+3 Types of Generic Delegates :
 Func : when the return type is required
 Action : non value returning
 Predicate : For a bool returning
@@ -470,6 +482,10 @@ SOLID is an acronym for the following.
 	I: Interface Segregation Principle (ISP)
 	D: Dependency Inversion Principle (DIP)
 
+Pattern
+=====
+singelton - having a single instance of the class
+Design Patterns - General reusable solution to some common problems(factory, dependency injection etc)
 
 Creating/Adding/Removing/Building/Running a Solution
 ====
