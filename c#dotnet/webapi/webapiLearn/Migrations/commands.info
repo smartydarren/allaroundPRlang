@@ -1,0 +1,4 @@
+
+
+dotnet ef migrations add SeedGenres --output-dir Migrations --context GamesStoreContext
+dotnet ef database update --context GamesStoreContext

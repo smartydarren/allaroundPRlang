@@ -3,17 +3,27 @@ using System.Data;
 using ConsoleProject.Models;
 using System.Globalization;
 using LoggingNamespace;
+using Microsoft.Identity.Client;
+using System.Data.SQLite;
 
 namespace ConsoleProject; // a namespace - used to simply group classes
 
 // namespace -> classes -> members -> method -> statements
 internal class Program // as class - has members (such as a properties and method)
 {
+
   //Console.WriteLine(); // this code wont work as it needs to be in a method.
   static async Task Main(string[] args) // a method - contains a block of code
   {
     Program p = new Program();
-    //p.dataTypes();
+    // var lambdaEg = (string yourName, int a, int b) =>
+    // {
+    //   var c = a + b;
+    //   Console.WriteLine("Your name is {0} {1}", yourName, c);
+
+    //   Console.WriteLine(p.AddLambda(5));
+    // };
+    // //p.dataTypes();
     //Console.WriteLine(args[0]); //dotnet run tacos - this will print tacos
     //Person person = new Person { FirstName = "Darren", LastName = "Q-Classes" };
     //System.Console.WriteLine(person.GetFullName());
@@ -25,9 +35,15 @@ internal class Program // as class - has members (such as a properties and metho
     //Console.WriteLine(fullName);
 
     //p.classesAndObjects();
-    NloggerClass nloggerClass = new NloggerClass();
+    // Nullable<bool> test = null;
+    // Console.WriteLine(test);
 
-
+    // lambdaEg("Darren", 2, 3);
+    //Console.WriteLine(printingYourName);
+    SqliteLearn s = new();
+    //string filename = @"C:\Users\dquadros\OneDrive\Office\LEARNING\mycodepath\allaroundPRlang\c#dotnet\learnbasics\ConsoleProject\Dbs\test.db";
+    //SQLiteConnection connect = new SQLiteConnection($"Data Source={filename};Version=3;");
+    await s.StepsInLine();
   }
 
 
@@ -317,6 +333,11 @@ internal class Program // as class - has members (such as a properties and metho
     Console.WriteLine("formattedDateInSpanish : {0}", formattedDateInSpanish);
 
   }
+
+  public int AddLambda(int n) => n * 2;
+
+
+
 }
 
 

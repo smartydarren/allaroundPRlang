@@ -1,0 +1,56 @@
+@webapiLearn_HostAddress = http://localhost:5261
+@gamescontext = {{webapiLearn_HostAddress}}/gamescontext
+@genres = {{webapiLearn_HostAddress}}/genres
+
+###
+GET {{gamescontext}}
+Accept: application/json
+
+###
+GET {{gamescontext}}/20
+Accept: application/json
+
+###
+POST {{gamescontext}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Name":"Bullies", "GenreId": 2 , "Price":5.15,  "ReleaseDate":"2013-06-09"
+}
+
+###
+PUT {{webapiLearn_HostAddress}}/?Id=19
+Content-Type: application/json
+
+{     
+    "name": "Bullies",
+    "genreId": 3,
+    "price": 24.25,
+    "releaseDate": "2013-06-09"
+  }
+
+###
+DELETE {{webapiLearn_HostAddress}}/19
+
+----------------------
+
+###
+GET {{genres}}
+Accept: application/json
+
+
+###
+POST https://ispselfcareadmin.hathway.net/api/isp/v1/customer/usagedetails
+scheme: https
+Accept: application/json
+Authorization: 94ba361452aa71ab51787898bd821f05a14511cf
+Content-Type:  application/json
+
+{
+    "account_no": "1125451094",
+    "start_date": "2025-02-01T05:00:00.000Z",
+    "end_date": "2025-02-17T05:00:00.000Z",
+    "registered_mobile_no": "9821487005",
+    "login_device": "web"
+}
