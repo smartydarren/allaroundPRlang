@@ -5,6 +5,7 @@ using System.Globalization;
 using LoggingNamespace;
 using Microsoft.Identity.Client;
 using System.Data.SQLite;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace ConsoleProject; // a namespace - used to simply group classes
 
@@ -43,7 +44,13 @@ internal class Program // as class - has members (such as a properties and metho
     SqliteLearn s = new();
     //string filename = @"C:\Users\dquadros\OneDrive\Office\LEARNING\mycodepath\allaroundPRlang\c#dotnet\learnbasics\ConsoleProject\Dbs\test.db";
     //SQLiteConnection connect = new SQLiteConnection($"Data Source={filename};Version=3;");
-    await s.StepsInLine();
+    //int? value = null;
+    //String value2 = new string("Darren");
+    //value2 = null;
+    //Console.WriteLine($"Data inside variable - {value2.Length}");
+
+
+    p.tables(67);
   }
 
 
@@ -334,10 +341,17 @@ internal class Program // as class - has members (such as a properties and metho
 
   }
 
-  public int AddLambda(int n) => n * 2;
-
-
+  public void tables(int whichTable)
+  {
+    for (int i = 0; i <= 10; i++)
+    {
+      var result = whichTable * i;
+      //Console.WriteLine($"{whichTable} * {i} = {result}");
+      Console.WriteLine(string.Format("{0} * {1} = {2}", whichTable, i, result));
+    }
+  }
 
 }
+
 
 
