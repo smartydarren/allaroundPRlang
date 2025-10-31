@@ -1,0 +1,38 @@
+﻿@using IdentityProject.Data
+@model IEnumerable<Product_ProductListViewModel>
+@*model List<Master_Product>*@
+
+@{
+    var producs = Model.OrderByDescending(c => c.ProductID);
+    ViewData["Title"] = "ViewProducts";
+}
+
+<h1>ProductList</h1>
+
+<p>
+    <a asp-action="CreateProduct">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product</th>
+            <th>CreatedDate</th>
+            <th>CreatedBy</th>
+        </tr>
+        @foreach (var prods in producs)
+        {
+            <tr>                
+                <td>@prods.ProductID</td>
+                <td>@prods.ProductName</td>
+                <td>@prods.CreatedDate</td>
+                <td>@prods.CreatedBy</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </thead>
+</table>

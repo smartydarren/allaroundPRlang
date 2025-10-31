@@ -1,0 +1,62 @@
+﻿@using IdentityProject.Models.ViewModels.Access
+@model List<UserRoleMapCreateViewModel>
+
+@{
+    ViewData["Title"] = "MapRoles";
+}
+
+@if (ViewBag.Success == true)
+{
+    <h1>Role Mapping successfull</h1>
+}
+
+@if (ViewBag.IsError != null)
+{
+    <h1>@ViewBag.IsError</h1>
+}
+
+@if (ViewBag.UserNotFound == true)
+{
+    <h1>User Not Found....Go Back to <a asp-controller="AccessMngmt" asp-action="Index">User Screen</a></h1>
+}else{
+
+<h1>Mapping Role for : @ViewBag.UserName</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-controller="AccessMngmt" asp-action="CreateUserRoleMap" asp-route-userId="@ViewBag.userID" method="post" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Role ID</th>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Role Name</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < @Model.Count(); i++)
+                    {
+                        <tr>
+                            <td><input asp-for="@Model[i].isChecked" type="checkbox" /></td>
+                            <td><input asp-for="@Model[i].RoleID" hidden type="input"/>@Model[i].RoleID</td>
+                            <td><input asp-for="@Model[i].UserId" hidden type="input"/>@Model[i].UserId</td>
+                            <td><label asp-for="@Model[i].isChecked" type="input" />@Model[i].RoleName</td>                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+}

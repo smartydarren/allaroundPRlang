@@ -1,0 +1,46 @@
+﻿@model List<LearnIdentityAut.Models.RoleModels.UserRolesViewModel>
+
+@{
+    ViewData["Title"] = "ManageUserRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ManageUserRoles Page : @ViewBag.UserID - @ViewBag.UserName</h1>
+
+@{
+    var userID = ViewBag.UserID;
+}
+
+@if(ViewBag.IsError = true)
+{
+    <h1>@ViewBag.ErrorMessage</h1>
+}
+
+<form asp-action=ManageUserRoles asp-controller=Administration asp-route-userID=@userID>
+    <div>
+        <div class="card-header text-center" >
+            <h2>Add or remove Roles for @ViewBag.UserName</h2>
+        </div>
+        <div class="card-body">
+            @for(int i = 0; i < Model.Count; i++)
+            @*foreach(var u in Model) do not use a foeach loop as the model binder wond bind with the controller parameter*@
+            {
+                <div class="form-group">
+                    <div class="form-check">
+                        <input asp-for=@Model[i].IsSelected class="form-check-input" type="checkbox" />
+                        <input type="hidden" asp-for=@Model[i].RoleName />
+                        <input type="hidden" asp-for=@Model[i].RoleID />
+                        <label asp-for=@Model[i].IsSelected class="form-check-label">
+                            @Model[i].RoleName
+                        </label>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="card-footer text-muted">
+            <input type="submit" value="Update" class="btn btn-primary" />
+            <a asp-controller="Administration" asp-action="EditUser" asp-route-userid=@ViewBag.UserID class="btn btn-primary ">Cancel</a>
+            <a asp-controller="Administration" asp-action="ListOfRoles" class="btn btn-warning ">GoToRoles</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,532 @@
+https://www.youtube.com/playlist?list=PLzDRvYVwl53t2GGC4rV_AmH7vSvSqjVmz
+
+Basics
+=======
+Refactoring - The act of rewriting or reorganising code, Its a constant never-ending process.
+Variable - stores some value -- we could declare a variable and not assign a value or declare a variable and store a value, in both cases we do not use them, the compiler will throw a warning but will let your program run.
+Identifier - What we call/name a value
+Expression - Evaluates to a value (x + " is weird.")
+Operator - It works on operands
+operand - The thing(s) that the operator works on
+literal - actual value
+using statement will always Dispose the object by closing the connections first as well as it is used to import other libraries
+Poco - Plain Old Clr Object - simple object
+
+single quote is used for characters and double quotes for strings
+
+dotnet framework - a common place for all libraries and is shared by all dotnet languages.
+
+alias - string with lowercase s is an alias for system.String data type, int is alias for system.int32 
+
+function vs method - A function stands by itself and its not attached to a class. else it would be called a method.
+
+Namespace - Its a logical container for related classes
+Assembly - Its a container of related namedspaces- DLL or EXE is the format
+
+-EscapeSequence like \" or \n for new line or \t for horizontal tab
+-Verbatim literals is a string starting with @ symbol like string s = @"c:\mydocs\darren"
+
+-Logical Operator {&} evaluates both the operands but the short circuit Logical operator {&&} evaluates the 2nd operand only when necessary e.g the first condition must be true for it to evaluate the second condition.
+
+-Ternary Operator Exp1? Exp2:Exp3- its needs 3 operands, If exp 1 is true then Exp2 is the final output else Exp3 is the final output
+
+-DataTypes ---
+-The variables in C#, are categorized into the following types −
+	-Value/Primitive/Built in types- They are the types that hold simple values. can be assigned a value directly. They are derived from the class System.ValueType e.g int, bit , bool, Byte, short, long, float, double, they are individual boxes holding data independently. in this type the values are copied over from one variable to another if referenced.
+
+  -Reference types - They are types that hold complex values, like objects The reference types do not contain the actual data stored in a variable, but they contain a reference to the data.
+   e.g object, dynamic, and string.
+   Object is an alias for System.Object class Pointer types
+
+
+-Methods - Performs a section of code whenever called/invoked. Benefits - it can be resued without writing multiple times.
+
+-attributes = In computing it adds extra metadata and then we can do something on it.
+
+-return keyword : It returns data back to the place where a method is invoked.
+
+-params keyword :  A method parameter that takes a variable number of arguments.The parameter type must be a single dimensional array.
+			Its used when we are not sure how many arguments of the same type the user would pass.
+			eg public double checkOutCart(param double[] prices){}
+
+Collections - e.g the purpose of an array is to essentially act as a collection, a group of things.
+you could have a fixed size arrays or a dynamic one list <LISTS>, this can expand and contract.
+
+Loops - The easiest way to cycle through a collection.
+	While Loop - It will execute infinite amount of times as long as its condition remains true
+        Do While - Keep doing something till the condition is true.
+	For Loop - For loops are Limited, It repeats a code finite amount of times.
+	Nested Loop - Loops inside of another loop. Once we enter the outer loop first iteration, the inner loop has to complete all the            iterations. then it moves up to the outer loop second iteration.
+
+-Enums - Its a value data type - A collection of named constants. e.g enum weekdays {Monday,Tuesday} its mainly used to make code more readable by giving the readable constant a meaningful name.
+
+Void - it will return nothing
+
+Null means the object does not reference anything in the Memory.
+
+conditional operators = shortform of the IF condition (condition) ? x : y
+
+composite formatting = "App Started {start} {end},10:45, 11:15" You log the variables separately so you can access them more easily whereas in interpolation you log only a single string - NLOG they use composite formatting.
+
+string Interpolation = In short, interpolation is a process of determining the unknown values that lie in between the known data points
+string interpolation = Allows to insert variables or values into a string literal
+			     Precede a string literal with a $ symbol
+				{} are placeholders
+				e.g Console.writeline($"Hello how are you {FirstName}")
+
+Lifecycle of a class - The point from Start of Execution upto end of execution of the class.
+
+
+Entity -Anything that is associated with a set of attribute (living/non living) in DBMS terminology
+        e.g Phone is a non living object [Attibutes are : Manufacturer, Color, Model No, Price, Features etc]
+
+Value - Its an implicit variable that provides access to the value assigned by the user. the data will also be similar to that of the assinged value/property/indexer
+
+Type - What is a Type - A class/structure/interface is a type, all user defined type
+
+Immutable - One whoes content cannot change, e.g string class - Once we declare a string, we cannot modify it. e.g. string str = "Hello"; 5bytes of heap memory
+
+Stack Memory - All the value types are stored here - FIFO rules
+Heap - Managed memory by the PR language to accomodate big data types likes classes, strings etc- The object still remains on the heap memory till the time the Garbage Collector kicks in clears all with no references, thats why heap is expensive.
+
+UML - unified modified langauage - its used to create some diagram in computer science e.g class diagram, its attributs and its methods
+
+Scalar - Like Integer, a single value which is comparable
+
+Delegate - Lets you store a function within a variable and use it as a parameter
+
+Events - It has publisher and sucscribers(listeners)
+
+Reflection - Dynamically inspect and execute your code rather than creating objects and accessing their function.
+
+Async code - It still runs on a single thread, these are basically tasks which can run simultaneously and be awaited.
+
+Bare Minimum Program Structure
+======================
+Namespace declaration
+A class
+Class methods
+Class attributes
+A Main method
+Statements and Expressions
+Comments
+
+
+OOPS
+============
+-Encapsulation :
+In object oriented programming encapsulation is used to the keep the data safe from other objects, bundling
+the properties and methods in one class is simple encapsulation.
+-Properties in C# - its a type of encapsulation, We should never expose public fields e.g Name field should not be NULL, its a mix of functional and a variable 
+
+-Abstraction :
+A simple example is in the service layer, we give a call to the DataBase, the user is unaware where we are storing the data. its simple abstraction.
+
+
+-Polymorphism :
+Method overloading with same name is an example - multiple forms.
+
+-Structures Vs Classes
+Initial Structures came in Procedural languages, similar to class its a User Defined Data Type and comes under value type.
+It can contain most of the things a class can contain[Fields, Methods, constructors, Indexes etc] which can usually represent a record
+The struct keyword is used
+Difference between Classes & Structures :
+1. Class is a reference type[heap memory] whereas structure is a value type[Stack memory]
+2. Memory allocation for instances of class is performed on Managed Heap whereas for structures its performed on stack.
+3. We use classes for representing an entity with larger volumes of Data, whereas we use structures for smaller volumes of Data.
+Note : All predefined data types under the libraries of the language which come under [REFERENCE] type category :
+        e.g String, Object are classes. whereas all predefined data types which come under [VALUE] type category :
+        e.g int(Int32), float(Single), bool(Boolean) are structures. - this is value type
+4. In case of a class [NEW] keyword is mandatory, but not in the case of structures but NEW can still be used.
+5. Fields of a class can be initialised at the time of declaration, whereas its not possible with fields in Structure.
+Note: For fields in structures we need to initialiaze the field in the constructor.
+6. In a class we can define constructors and if its not defined, there will be an implicit constructor, whereas in 
+        the case of a STRUCTURE a paramater less or default constructor is always implicit and cant be defined
+        explicitly again, what we can define is only parameterized constructor.
+7. Inside a class if we define explicit constructor, then no implicit constructor is created, whereas in the case of 
+        structures even if we define an explicit paramater constructor, then also an implicit constructor will be
+        called if there is a new Object created with no paramaters passed. i.e. n+1 constuctor
+8. Class can be inherited by other classes, whereas a cannot inherit from a struct.
+9. Structure and Classes both can implement interfaces. but struct cannot inherit from another struct or class.
+10. Structures cannot have destructors.
+
+-Interfaces :
+Its a user defined type, similar to a class which can have properties, Methods, delegates & events.
+Difference :  But interface can only have declaration, not implementation, not even instance fields.
+Interfaces can inherit from other interfaces at a time, but it cannot inheret from an abstract class.
+	Note: Every  method of an interface in the chain should be implemented by the class(Mandatory)
+We cannot create an object of an interface, however an interface reference variable can point to a derived class object.
+The default scope of the members of an interface is Public, it does not allow explicit access modifiers.
+Override modifier is not required out here like Abstract classes
+
+-Explicit Interfaces
+If method names are the same in Both the Interfaces, we will have to explicity call the particular Interface.
+	Access modifiers are not allowed on explicit implemented interface members.
+	When a class explicitly implements an interface member, the interface member can no longer be accessed throug the class reference variable, but only through Interface reference variable or we will have to TypeCast it to required Interface.
+	We can even have a combination of 1 implicit Interface member and 1 or N explicit Interface Methods so that the Class reference Variable can call it.
+
+
+1. Classes & Objects
+===================
+Class is a group of related variables and methods also called blueprint(specification of what the class is).
+its actually a plan, just like a plan of your house, without which you cannot create a house
+Then we construct the house and live in it...similiarly in programming we create an object in the memory basis the class.
+e.g a book class can have attribures like author, title and no of pages
+then in the main method we can create an actual book object(instantiating)
+
+Target-Typed new : Beginning with C# 9.0, constructor invocation expressions are target-typed. That is, if a target type of an expression on the left is known, you can omit a type name, as the following example shows:
+	List<int> xs = new();
+
+To consume a class, one must create an object of it in the memory
+e.g int = 100 is wrong | int i = 100 is correct
+
+The default scope of a member of a class is Private
+
+-Passing by values = The original value remains the same, a copy is passed on.
+-Passing by reference = It happens with Objects when we pass a reference(address in the memory) of an object to a method so that it can change the values of the instance object.
+-Out/Ref keywords - In the calling method the vairable needs to be initialised.
+
+-In C#, 
+static in JAVA means you can call a static method/variable directly by its class name.
+static means something which cannot be instantiated. 
+        You cannot create an object of a static class and cannot access static members using an object. 
+        C# classes, variables, methods, properties, operators, events, and constructors can be defined as static 
+        using the static modifier keyword
+
+Static classes are useful as containers for utility functions and constants. If the class does not represent an object and is used only for this purpose then it makes sense to declare it as static.
+
+-Inner Class : A class inside another class
+
+-Constructors
+Its a special method without any return type to create an object of the class.
+or
+Its a special method present under a class responsible for initiating/instantiating the variables of that class and since its a 
+method it will require a name which should be the same as the class name and more importantly
+It can be public,private etc.....
+
+Please Note :- If no constructor is created by the programmer, the compiler will create an implicit constructor
+Its is required to put an object in an early state
+The name has to be same as that of the class
+
+- Primary Constructor - introduced in c#12 where you can define the constructor parameters within the class declaration itself, making the syntax more intuitive and readable.
+
+Types of constructors 
+------
+1. Default or Parameterless 
+2. Parameterised - This has to be created by the programmer only
+3. Copy Constructor - If you want to create multiple instances with the same value.
+                      It takes the same class as a parameter to it.
+
+                      //Above constructors are non static / instance constructors
+
+4. Static Constructor - If a constructor is explicitly declared with STATIC modifier
+If a class contains static variables, then implicitly a static constructor will get created
+This is first to execute in the class
+This cannot be parameterized as they are implicitly called.
+5. Private Constructor - You will need atleast one static method in the class to create a new instance of a class having private constructor.
+
+Difference between static vs non static constructors :
+====================
+-If a constructor is explicitly declared with a static modifier then its static, whereas rest are non-static
+-Since constructors are responsible for initialising field of a class, a static constructor will initialize static
+variables and non-static constructors will initialiaze non static fields.
+-Static constructors are implicitly called, whereas non static constructors must be explicitly called
+-Static constructors execute immediately once execution starts. its the first block of code, on the other hand non static 
+   constructors only execute everytime an instance of the class is called.
+-Static field will only be one copy for the whole class, but non static fields depends on number of objects created
+-Static constructors cannot be parameterized
+-Only if there is a static variable, only then implicitly a static constructor can be called.
+
+Variables / Instance / Reference of a class
+==============================
+Static Variable - let say we want to share data between 2 objects, static methods and static variables belong to the class and are shared between all objects.A static variable can be accessed without creating an instance of the class. so we can access a static variable either from the object or by using the name class as well..
+Important Note : A static method can not access instance variables or methods, strictly only static variables
+[java tutorial]
+
+Varible of a class - a copy of the class which is not initialised.
+Instance of a class - a copy of the class which is initialised and has its own memory and now the members of it can be referenced
+Reference of a class - a copy of the class which is initialised using an existing instance, references a class and will not have a memory location they will be referencing the same memory.
+
+
+Access Specifiers / Access Modifiers / Visibility Modifiers [Encapsulation]
+======================
+They are type of modifiers, all keywords public, Private abstract, override etc... 
+Its a special kind of modifiers using which we can define the scope of a type and its members, 
+    scope means - who can consume
+
+On a Class you can apply either Public or Internal, that too Internal will not be accessible outside the project
+but on the members we can apply all 5 modifiers.
+
+5 Types of access modifiers in C#
+----------
+1. Private -  Only accessible within same class, not child and only by its objects
+2. Internal - Only accessible within the Project
+3. Protected - 
+4. Protected Internal - 
+5. Public - Its simply available via classes, objects
+
+Types of Variables
+=============
+We all know a variable is used to store something.
+There are 4 different types in C#
+
+1. Non Static/Instance - An instance of a class is required for accessing the variables, its compulsory
+2. Static - When static keyword modifier is used / or if its declared under any static block.
+            static members of a class doesnt require instance of class.
+            In the lifecycle of a class a static variable will be initialised only once.
+3. constant - If a variable is declared by using the keyword CONST, and they cannot be modified after declaration. 
+              Its a must to initialize/compulsory at the time of declaration.
+              Its a single copy in the memory as we cannot modify it, Its a fixed value for the whole class
+              The only difference is Static can be modified but not constant.
+4. Read only - It uses readonly keyword, these also cannot be modified like constants, but after initialisation
+               You can initiliaze it later, may be under a constructor.
+               The behaviour will be similar to non static variables, ie it will also need an instance of a class
+               Its will need to be initialized in the constructor only
+               Its a fixed value specific to an instance of a class
+
+
+Steps for Developing an application [UML diagram]
+-----
+Step 1 : Identify the entities that are associated with the application we are developing
+         e.g School Application - Student, Teaching Staff, Non Teaching Staff
+Step 2: Identify the Attributes of each and every attribute
+        Student - Id, Name, Address, Phone, Class, Marks, Grade, Fees
+        Teaching Staff - ID, Name, Address, Phone, Desig, Job, Salary, Qualification, subject
+        Non Teaching Staff - ID, Name, Address, Phone, Desig,Job, Salary, Reporting Mgr
+Step 3 : We are learning OOPS, the strength is reusability so eliminate the redundant fields and design your classes accordingly
+         We can do the same with procedural language also using structures but it will be repititive
+         In DataBase we use tables for representing entities
+         Note : In OOPS classes are used for representing entities
+                In Procedural language structures are used but unfortunately it doesnt support inheritance 
+                DataBases tables are used for representing entities.
+        Lets identify the common attributes and put them in a common order
+        create a parent class with these and take advantage of reusability
+Step 4 : Define the classes representing the entities, which are put in Heirachical order
+         Refer to Student Applcation Project............
+
+
+Operator Overloading
+==========
+It is also an approach of defining multiple behaviours to an operator and those behaviours will vary based on the operand types.
+E.g.    number + number = addition
+        string + string = concatenation
+
+
+
+Indexers
+===========
+Its a member of a class and the members of a class starts behaving like a virtual arrays
+Even index is something like a property, by the attributes needs to be used with an index number
+
+
+
+MultiCast Delegates
+-----------
+Here a delegate will hold the reference of more than 1 method
+      
+
+Anonymous Methods
+----------
+The logic can be written directly in the main method.
+Its uses where few lines of code is required to be implemented by another programmer.
+Lamda expression "=>" was introduced in .net 3.0 to simplify the calling delegates.
+
+3 Types of Generic Delegates :
+Func : when the return type is required
+Action : non value returning
+Predicate : For a bool returning
+
+Extension Methods
+========================
+This is a new feature that has been added in C# 3.0
+-Inheritance is a mechanism using which we can extend the functionality.
+Problems :-     We cannot apply inheritance on sealed classes.
+                Unfortunately the type is not a class, its a structure.
+Basically Extension Methods is a mechanism of adding new methods into an existing class or structure also without modifying
+ the source code of the original type and in this process we dont require any permissions from the original type and 
+ the original type does not require an re-compilation
+
+-Extension methods are defined as static, but once they are bound with any class or structure, they turn into non-static,
+        that is why we call it by using an instance of the class.
+-If an extension method is defined with the same name and signature, then the preference will be given to the original
+        method only.
+-The first method of the parameter should be the name of the type to which it should be bound to.
+- We can add extension methods to any type structure/classes etc 
+
+Exeception Handling
+=======================
+In the application there will always be 2 types of errors :
+1. Compile time - this is due to syntaxtical mistakes, these are never dangerous, because while compiling
+        the code the compiler will list you the error and we can fix it.
+2. Runtime - These are errors due to various errors at the time of execution. the code id now running, there
+        are lots of reasons, and remember the compiler{CLR} will never check the logic, it only checks
+        syntaxes, because Logic can be implemented in different ways :
+                -wrong implemetation of Logic e.g. cannot go beyond the index of the array.
+                -wrong inputs supplied e.g. instead of Integer value user entered String/bool etc.
+                -Missing required resources e.g. The file on the HDD is missing after a week.
+        -Runtime errors are dangerous, the program terminates abnormally on a particular line and the rest of 
+                the code will not execute.
+Exception is a class with a Bass property called 'MESSAGE'
+
+Try = try code that is considered dangerous
+Catch =  Catch the exception you know and in the last use the generic exception,
+finally = always executes regardless if Exception is caught or not
+
+There are 2 categories  - System{All exceptions raised by CLR e.g Number divide by 0} and Application{Here the programmer
+will create an instance and throw custom exception messages}
+
+Application Exceptions more Details :
+---------------------
+Inherit from application exception class and make our own class of Exceptions
+
+
+MultiThreading
+====================
+MultiTasking - Capable of running more than one application at a time.
+Operating System :
+-Process
+        -Thread : its a unit which is going to execute a code inside the application
+- Every application by default contains one thread to execute the program and that is known as main Thread
+        So every program by default it is a single threaded model
+in a single threaded program, the methods have to wait for the other file to run.
+
+MultiThreading
+---------------
+To overcome the above issue, we can have multiple threads under a process, where each thread is trying
+        to perform a different action.
+Process >> MultiThread -- Maximum utilisation of CPU resource.
+
+Collections
+===============
+-These are basically Dynamic arrays
+There are 2 types Non - Generic and Generic 
+
+Non Generic are not Type Safe, they can accept any type of Values
+
+Array vs Array Collection
+--------------------------
+	-Arrays are a collection of variables of the same datatype and are reffered by a common name.
+        -Arrays are strongly type
+        -We cannot add or remove from an array, but from a collection yes
+        -The size of an ArrayCollection will grow - it auto rezises
+        -Collections is basically are classes and defined in a namespace called Systems.Collections
+
+MultiDimensional Array - 2 dimension int[3,2] - 3 rows and 2 columns
+Jagged Array - Its a collection of different arrays [][] - this first bracket is the size of the array and the 2nd specifies the dimension of the array which is going to be stored as values.
+
+HashTable Collection
+----------
+An ArrayList is a key value combination, but these Keys are predeinded, the Key starts with 0 and ends with max no -1
+An HashTable allows us to store our own Keys and values
+
+Array is Type Safe - we can only have one type of array e.g. int[] integer array
+                - second array has a fixed length
+Collections are not TypeSafe - we can declare an arraylist, but it will accept any type of data in it.
+                - arraylist is auto resizing
+Here we need a combination of both
+
+Generic Collection
+----------------------
+Its also a collection but its type safe + Auto resizing
+In C# 2.0 they introduced this so that they could counter the following issues
+Comparing 2 Object - Float, and Double type.
+                        - unnecessary boxing and unboxing of types e.g float to double
+
+var keyword - it identifies the variable type at compile time itself
+dynamic keyword - it identifies the variable type at runtime
+
+TypeSafe just add <T> after a method
+
+Dictionary
+-------------
+Hash Table was replaced by Dictionary
+In case of generic collection the type of value we want to store need not be predefined like int, float etc
+        it could also be user defined type(Class,ENUM etc)
+
+Linq:
+==========
+Language Integrated Query - just like SQL(Structured Query Language)
+SQL simplifies the process of retreiving data from Tables.
+using Linq we can write queries on a wide variety of DataSources, like Arrays, Xml,DataSets, DataBases e.t.c
+
+To use Linq with a RelationalDataBase we need to convert all the relational objects to ORM types
+Object Relational Mapping
+
+Tables -> classes
+Columns -> Properties
+Rows -> instances
+Stored Procedures -> Methods
+
+
+-Solid Principles
+The reason behind most unsuccessful applications
+Developers build applications with good and tidy designs using their knowledge and experience. But over time, applications might develop bugs. The application design must be altered for every change request or new feature request. After some time, we might need to put in a lot of effort, even for simple tasks, and it might require a full working knowledge of the entire system. But we can't blame change or new feature requests. They are part of software development. We can't stop them or refuse them either. So who is the culprit here? It is the design of the application.
+
+The following are the design flaws that cause damage to software, mostly.
+
+Putting more stress on classes by assigning more responsibilities to them. (A lot of functionality not related to a class.)
+Forcing the classes to depend on each other. If classes depend on each other (in other words, tightly coupled), then a change in one will affect the other.
+Spreading duplicate code in the system/application.
+
+SOLID is an acronym for the following.
+	S: Single Responsibility Principle (SRP)
+	O: Open-closed Principle (OCP)
+	L: Liskov substitution Principle (LSP)
+	I: Interface Segregation Principle (ISP)
+	D: Dependency Inversion Principle (DIP)
+
+Pattern
+=====
+singelton - having a single instance of the class
+Design Patterns - General reusable solution to some common problems(factory, dependency injection etc)
+
+Creating/Adding/Removing/Building/Running a Solution
+====
+dotnet new sln -n "learnbasics"
+dotnet sln learnbasics.sln add ./ConsoleProject/ConsoleProject.csproj
+dotnet sln c#_dotnetcore.sln remove ./Console_Applications/console_app.csproj
+dotnet build C#_dotnetcore.sln
+dotnet run -p Console_Applications/AccessMod2/AccessMod2.csproj
+
+Creating a new Project -  Console application using vscode
+===========
+dotnet new console -o ConsoleProject --use-program-main -f net8.0
+
+Adding reference of another project
+---------------
+dotnet add Accessmod2.csproj reference ..\AccessMod\Accessmod.csproj
+
+
+EF Core - Use any database no need of SQL writting
+========
+ORM (object relational mapper)
+Create Classes and they map to tables in the DataBase
+
+Step 1:
+------
+Model Designing - Either Data Annotation Style {using attritubes over field names} or Fluent API style {builder.Entity<ModelType>.HasKey}
+
+DAL - DataAccessLayer {Create a class library} where all the classes will be stored as models within your API Project
+Dependencies >> Nuget Packages Required >> {Microsoft Entity Framework Core,Microsoft.Extensions.Configurations, Core.Tools[for migrations], Microsoft SQL Server,}
+	DataBase Context is required to connect to the database
+	DBSet add all the classes as <DBset>
+System.ComponentModel.DataAnnotations is required
+
+--------------------------------------------
+Web API is just a concept - its not a technology, its like SQL over HTTP, e.g if we need to deliver data we just cant sent sql over the web, we can sent data in formats like json,xml etc - its not beautiful/pretty but its useful data which other applications can use like react to render it on the screen. etc.............
+=============
+API is used to assist/expose it to different types of applications (Android,IOS,C#,PHP etc) to fetch and post database. also to avoid duplication/misallignment of code in every applicaiton and avoid talking to the database directly we use API. It establishes a connection with the database and rest all applications will commuicate withe the Web API project.
+
+It also adds abstraction, as the code is not visible to the calling application.
+It avoids business duplication
+Security as does not allows to talk to the database directly
+
+What is REST{Representation state Transfer} - Its a combination of principals that must be followed by a web API project.
+Url,stateless,verbs etc
+
+DTO's :- 
+Right now, our web API exposes the database entities to the client. The client receives data that maps directly to your database tables. However, that's not always a good idea. Sometimes you want to change the shape of the data that you send to client. For example, you might want to:
+HTTP Request major Components : Url, Verb(Method), Header/s, Body, Data etc
+HTTP Responset major Components : Status Code, Header/s, Data etc
+
+Frequently used Code - 200 OK, 201 new resource, 400 Bad Request, 401 UnAuthorised, 404 Resource not found

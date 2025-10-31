@@ -1,0 +1,12 @@
+﻿@using IdentityProject.Models.ViewModels.Test
+@model IEnumerable<ListAllClaimsViewModel>
+
+
+@foreach (var item in Model)
+{
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">@item.cType</li>
+        <li class="list-group-item">@item.cValue</li>
+    </ul>
+}
+

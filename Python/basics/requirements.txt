@@ -1,0 +1,38 @@
+requests==2.31.0
+duckdb==0.10.0
+pandas==2.2.0
+#psycopg2==2.9.7
+#pyodbc==5.0.1
+
+# Creating the Env-------
+# C:\Users\dquadros\AppData\Local\Programs\Python\Python311\python -m venv D:\LearnToCode\pythonVenv\LearnPythonEnv --Olpt
+# C:\Users\dquadros\AppData\Local\Microsoft\WindowsApps\python -m venv C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv -Olpt
+# C:\Users\darre\AppData\Local\Programs\Python\Python312\python -m venv D:\TestingData\PythonEnvs\Dagster --plpt
+# C:\Python312\python -m venv C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv
+
+# Switch to the Env------
+# C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\activate.bat AND C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\deactivate.bat
+# D:\TestingData\PythonEnvs\Dagster\Scripts\activate.bat AND D:\TestingData\PythonEnvs\SSSPL-Dagster-Starlink\Scripts\deactivate.bat --Personal laptop
+
+# Switch to our folder------
+#
+# cd D:\LearnToCode\GitRepos\PythonProjects\PythonBasics  --plpt
+
+
+# OLPT Env
+# C:\Users\dquadros\AppData\Local\Microsoft\WindowsApps\python -m venv C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv
+# C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\activate.bat
+# C:\Darren\TestingData\PythonVirtualEnviornments\LearnPythonEnv\Scripts\deactivate.bat
+# pip install -r C:\Users\dquadros\OneDrive\Office\LEARNING\mycodepath\allaroundPRlang\Python\basics\requirements.txt
+
+# Install the packages------
+# pip install -r C:\Users\dquadros\OneDrive\Office\LEARNING\Python\requirements.txt
+# pip install -r D:\LearnToCode\GitRepos\allaroundPRlang\Python\PythonBasics\requirements.txt --plpt
+
+
+# In VsCode switch the Interpreter by opening command palette ctr+Shit+p >> Python: Select Interpreter
+#
+# D:\TestingData\PythonEnvs\SSSPL-Dagster-Starlink\Scripts\python --plpt
+
+# To upgrade the package
+# python.exe -m pip install --upgrade duckdb

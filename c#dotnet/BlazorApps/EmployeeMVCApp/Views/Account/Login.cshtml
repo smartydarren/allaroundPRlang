@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+  
+@{
+    var ReturnURL = ViewData["ReturnUrl"] as string;
+    var tempData = @TempData["Error"] as string;
+}
+
+<h1>return url = @ReturnURL</h1>
+
+<h3>Login Form</h3>
+@if (!string.IsNullOrEmpty(tempData)){
+    <h2 class="alert-danger" style="padding:20px;">@tempData</h2>
+}
+<br />
+
+<form method="post" asp-controller="Account" asp-action="Login" asp-route-returnurl=@ReturnURL>
+    Input Username <input type="text" name="username" />
+    <br />
+    Input Password <input type="password" name="password" />
+    <br />
+    <input type="submit" value="Login" />
+</form>

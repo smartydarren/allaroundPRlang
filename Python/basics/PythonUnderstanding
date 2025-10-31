@@ -1,0 +1,60 @@
+Python is a dynamic language
+
+https://networklessons.com/python
+
+At the Heirarchy
+A single .py file is called a module
+
+PackageSytem sometimes also called as libraries
+==========
+To create a package system - Root Folder with __Init__.py >> Subfolder with __Init__.py and modules in it.
+
+Virtual Enviornments are to be used with projects and built in dependencies
+=============
+One can create unlimited virtual enviornments and keep switching based on working project to manage dependencies.
+set olpt=C:\Darren\TestingData\PythonVirtualEnviornments
+set user=dquadros
+set pversion=Python312
+set penv=testenv312
+
+set user=darre
+set plpt=D:\TestingData\PythonEnvs
+set pversion=Python312
+set penv=testenv312
+
+    Step 1 : Install Python
+    -----------
+    Download the latest version and install using user account without PATH and Administrative priviligies which is really not required
+    use CMD
+    C:\Users\%user%\AppData\Local\Programs\Python\%pversion%\python --version
+    C:\Users\dquadros\AppData\Local\Microsoft\WindowsApps - when you install python from the app store
+    (Get-Command python).Path - powershell command
+
+
+    Step 2 : Create your Virtual Env
+    ---------------
+    Point to any of the versions of Python exe versions on your computer where it is installed.
+
+    Using CMD shell in VS Code navigate to the folder where you want to create all your enviornments :
+    1. cd %plpt% -- and run the below command :
+    2. C:\Users\%user%\AppData\Local\Programs\Python\%pversion%\python -m venv %plpt%/testenv312 {your enviornment name}
+
+    Note :- In VSCode remember to change the enviornment interpreter path at the bottom right corner, else it will point to the default location and will not list your enviornment packages.
+
+    Create a requirements.txt files with all the required packages for this Project/Package to work
+    pip install -r requirements.txt
+
+    Step 3 : Activate/Deactivate/Delete your virtual Env.
+    --------------------
+    %plpt%\%penv%\Scripts\activate.bat
+    %plpt%\%penv%\Scripts\deactivate.bat
+    using powershell deltet this folder - C:\Darren\Projects\PythonVirtualEnviornments\rm -r dagsterdevenv
+
+    echo %path% - using this env now, the first folder you will see is this env folder.
+    python.exe -m pip install --upgrade pip
+
+
+Decorators
+=========
+Passing a function to another function to do additional work
+

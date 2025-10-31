@@ -1,0 +1,48 @@
+@webapiLearn_HostAddress = http://localhost:5261
+
+GET {{webapiLearn_HostAddress}}/games/
+Accept: application/json
+
+###
+GET {{webapiLearn_HostAddress}}/games/2
+Accept: application/json
+
+###
+POST {{webapiLearn_HostAddress}}/games
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Name":"Prince of Dubaidddddddddddddddddddddddddddddddddddddddddddddddddddd", "Genre":"RolePlaying", "Price":150.99,  "ReleaseDate":"2011-11-18"
+}
+
+###
+PUT {{webapiLearn_HostAddress}}/games?Id=1
+Content-Type: application/json
+
+{     
+    "name": "Hello",
+    "genre": "RolePlaying",
+    "price": 84.78,
+    "releaseDate": "2007-10-16"
+  }
+
+###
+DELETE {{webapiLearn_HostAddress}}/games/2
+
+###
+GET {{webapiLearn_HostAddress}}/bss/api/subcatsort/17
+Accept: application/json
+
+###
+GET https://luci.metteldev.net/SD_ServiceDelivery_API/rest/ServiceDelivery/
+Accept: application/json
+
+###
+GET https://api-gateway.metteldev.net:8443/servicedelivery/
+Accept: application/json
+
+
+
+
+

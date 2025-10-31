@@ -1,0 +1,56 @@
+﻿@using IdentityProject.Models.ViewModels.Access
+@model IEnumerable<Access_UserListViewModel>
+
+@{
+    Model.OrderBy(c => c.Id);
+    ViewData["Title"] = "Users";
+}
+
+<h1>List Of Users</h1>
+
+<a class="btn btn-primary" asp-controller="Account" asp-action="Register">
+    <i class="bi bi-cloud-plus"></i>
+    <span class="sr-only">Create</span>
+</a>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>                    
+                    <th scope="col"></th>
+                    <th scope="col"></th>                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usr in Model)
+                {
+                    <tr>
+                        <td>@usr.Id</td>
+                        <td>@usr.Name</td>                                                
+                        <td>
+                            <a class="btn-sm btn-outline-info " asp-controller="Account" asp-action="Details" asp-route-_userId=@usr.Id>
+                                <i class="bi bi-pencil-square"></i>
+                                <span class="sr-only"> Edit</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary btn-sm" asp-controller="AccessMngmt" asp-action="ResetPassword" asp-route-userId=@usr.Id>
+                                <i class="bi bi-person"></i>
+                                <span class="sr-only">ResetPassword</span>
+                            </a>
+                        </td>  
+                        <td>
+                            <a class="btn-sm btn-outline-dark" asp-controller="AccessMngmt" asp-action="CreateUserRoleMap" asp-route-userId=@usr.Id>
+                                <i class="bi bi-gear"></i>
+                                <span class="sr-only">MapRoles</span>
+                            </a>
+                        </td>                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

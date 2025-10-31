@@ -1,0 +1,109 @@
+Design Pattern Data = Models >> Repository >> Controllers
+
+USE DInventory
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET IDENTITY_CACHE = OFF
+GO
+
+_viewStart - all directives to be set in here e.g all your models, tag helpers etc
+_layout - common to all views e.g navbar, footer etc
+
+@model - for getting the model from controller to view
+@Model - to get the attributes from the model
+
+Strong Binding is know as Model Binding
+
+Viewbag[works on dynamic type] - Its used to pass data from action method to View, loose binding, its type is a dynamic,any type of data can be used,  since it is razor syntax, we have to use @ symbol in the view
+note : it does not give compile time error as its Dynamic, the scope is only upto that Action Method to the corresponding view, its case sensitive
+
+Viewdata[works on dictionary type] - Its used to pass data from action method to View, loose binding, its type is a dictionary, we need to cast its datatype on the view. its a compile time, so its better for us. its also allows to pass data from view to layout file, eg the title of everypage
+
+Dynamic views - without using @model directive - No intellisense, no compile time error, but advantage is we can add addtional fields along with the existing model. Not a good Architecture.
+
+Tag Helpers[prefix asp-] - its used to render HTML elements its a combination of HTML+c# code e.g create image tag - instead of using IMG tag 				other examples are Form...basically inserting c# code into our HTML to get the best out of it. @addTagHelper or 				@removeTagHelper
+	Anchor Tag Helper - lets say localhost:6353 and we use href:/ to navigate to our home page, but if I want to add 					localhost:6353/bookstore and then start my home page, I will have to make changes to all pages
+	Image Tag Helper - it helps in caching busting images, It appends a version to the image URL so the browser will download the updated file instead of the file from cache if the file has been changed on the server.
+	Enviornment Tag Helper - Very Important Tag Helper - css min files compress our variables and doest not help in debugging, for production use minified and development use non minified files better for debugging.
+	Link Tag Helper - suppose CDN file network is unavailable then download files from server. use the various attributes avlbl in link tag helpler
+	
+Form Creation - its an input element, Binding Model etc
+
+Async - How to make the application robust and fast. Async does not improve speed. In fact, Async is slightly slower because of the overhead of saving and resuming state. Async improves scalability and responsiveness.
+
+validations -
+	Drop Down validation - Hardcoded(enum),
+
+custom validation - Helper Folder - create class and inherit from validationattribute
+
+Custom Tag Helper - its a c# code which integrates with html
+
+Client Side Validation - There is no need to hit the server again and again, so use client side validations,(js libraries - jquery,validate.js,unobtrusive) if these 3 libraries are present, then there is no need to write addtional script files, - for production use the minified version
+
+Remote Validation - e.g validation if email address is taken by another user. its a server side function. inturn it uses ajax call
+
+Ajax - {Jquery-Ajax-Unobtrusive} - this is used for Forms, and spinners etc.
+
+Partial Views - its used to render HTML within other view file output , its a normal html file but the way we use in other views, that makes them special. its to break up a large file to into smaller views, conventially it start with _
+
+ViewComponents - Introduced in asp dot net core, they are similar to partial view, and do not depend on model binding, e.g dynamic navigation menu(Based on Role), it will get the data from the database, it needs two types of file one C# and second cshtml
+
+Routing - Process of mapping an incomming request to a controller & action method
+	Attribute Routing is mostly preferred - mapping with controller names.
+	Routing can also have constraints, there are lots and lots of it.
+
+Dependency Injection - Making your code Loosley Coupled, we can also use it directly in views(@inject property).
+
+Appsetting Json File - smtp details, different types of database, we can have end number of appsettings files. e.g appsetting.development.json - It all depends on the launch settings.json file configuration file - Please note the return type is always a string, for boolean values use the GetValue Method
+
+	-We can even use Getvalue methods to read the settings.
+
+Identity Core - Security Concepts - Login,Logout,Roles etc , its a universal framework to provide security to any dot net application
+		- Role Manager
+
+Repositor Pattern - It helps to decouple as much as possible, e.g put an interface so that we could access data from the database or inmemory etc, no need to touch the controller, also while Unit Testing we can use this Interface to inject a fake database for testing purposes.
+
+Authentication - Identityuser and sign in user
+Authorisation - RoleBased, ClaimBased, Policy Based
+
+	for loop - includes a unique integer in the html code, but foreach doesnt as part of Model Binding activity
+
+RBAC vs CBAC - Rbac is used at with Roles attributes whereas claims is actually a key : value pair, eg in your application if you want to apply for maternity leave the gender should be female.
+In asp dot net core a Role is atcually a Claim whose Type is a Role.
+claims based authosisation is the newly added to aspdotnet core and it is the future it allows twitter,google et authentication mechanisms.
+
+
++-----------------------------------+
+Lesson - ADO DotNet
+=====
+Its a Framework to interact with a variety of databases, xml etc sources, it can be consumed in any dotnet application
+oledb = its for excel, Access
+EF Core is a wrapper around ADO .Net so it could be a little slower, but it takes away the abstratction required to make a connection, map the objects and write the statements.
+
+DataSet - its a disconnected architecture, it just gets the data from the database and then stores it in a dataset, its independent of provider, its an in memory representation of your database, it can store tables and its relationship between them. its simply a collection of tables unlike a DataTable which is a single table in the memory.
+
+DataAdaptor - it requires a dataset, it opens and closes the connection which is managed by the Data Adaptor, it basically provides a disconnected data Model, so we can cache the same in memory.
+
+DataTable - DataTable represents a single table in the database. It has rows and columns.There is no much difference between dataset and datatable, dataset is simply the collection of datatables.
+	2 Types = Typed(Strongly Typed DataSets - its based on databaseschema .xsd, intellisense is available, errors can be handled at Design time) and UnTyped DataSet(No schema at design time, it will fill at runtime)
+
+Connections are very valuable, they need to be closed, open it as late as possible and close is as soon as possilbe, either use a try/catcch/finally block or just wrap it with a using statement. otherwise if connections are not closed then there might be serious performance issues.
+
+DataReader - readonly,forward only cursor, here you have to explicitly open close connections
+
+SQL command builder class can generate update/delete statements based on select commands.
+
+
+
+Heirachy
+Connection >> Command >> type of return (reader or adaptor)
+
+Using Statement
+-----------
+its the Best Practise to the use The using statement is used in 2 places, one to import namespaces and the other to properly open and close connections.
+
+Execute Reader Method - when the sql statement is returning rows of data
+Execute Scalar - Return type is object - e.g int, string etc
+Execute Non Query - for Insert/Updates
+
+
+

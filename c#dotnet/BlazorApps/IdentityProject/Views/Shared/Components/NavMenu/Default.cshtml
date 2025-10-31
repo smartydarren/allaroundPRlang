@@ -1,0 +1,59 @@
+﻿@model VC_NavMenuSingleTable
+
+
+<div class="container-fluid">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IdentityProject</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        //var CompleteMenu = Model.MainMenu;
+        var UserMenu = Model.UserMenu.Distinct();
+
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                @if (Model != null)
+                {
+                    foreach (var ParentList in UserMenu.OrderBy(x => x.OrderBy))
+                    {
+                        if (ParentList.ParentMenuId == null && ParentList.Action != null)
+                        {
+                            //if (ParentList.Action != null) //Controller/Action should be Blank
+                            //{
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" asp-controller="@ParentList.Controller" asp-action="@ParentList.Action">
+                                        @ParentList.MenuName
+                                    </a>
+                                </li>
+                            //}
+
+                        }
+                        var children = UserMenu.Where(x => x.ParentMenuId == ParentList.Id).ToList();
+                        if (children.Count != 0)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @ParentList.MenuName
+                                </a>
+                                 <div class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    @foreach (var subMenuList in children.OrderBy(o => o.OrderBy))
+                                    {                                       
+                                        if (subMenuList.Controller != null & subMenuList.Action != null)                                        
+                                        {                                                 
+                                         <a class="dropdown-item" asp-controller="@subMenuList.Controller" asp-action="@subMenuList.Action.ToString()">@subMenuList.MenuName</a>                                           
+                                        }
+                                    }
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    }
+</div>
+

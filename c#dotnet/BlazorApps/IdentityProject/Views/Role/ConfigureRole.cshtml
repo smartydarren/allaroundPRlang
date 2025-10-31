@@ -1,0 +1,67 @@
+﻿@using IdentityProject.Models.ViewModels.Role;
+@model List<RoleConfigurationViewModel>;
+
+@{
+    ViewData["Title"] = "ConfigureRole";
+    var roleModel = Model;
+}
+
+@if(ViewBag.Success == true)
+    {
+        <h1>Role with ID: @ViewBag.RoleId configured successfully</h1>    
+    }
+   
+   
+
+<h1>ConfigureRole</h1>
+
+<h5>@ViewBag.RoleId | @ViewBag.Name | @ViewBag.Desc </h5>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="ConfigureRole" asp-route-roleId="@ViewBag.RoleId" method="post" role="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>                      
+                        <th scope="col">Menu</th>
+                        <th scope="col">Allow View</th>
+                        <th scope="col">Allow Create</th>
+                        <th scope="col">Allow Update</th>
+                        <th scope="col">Allow Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < @Model.Count(); i++)
+                    {        
+                        <tr>
+                            <td><input readonly hidden asp-for="@Model[i].MenuID"  /></td>                            
+                            <td><label readonly asp-for="@Model[i].MenuName" />@Model[i].MenuName</td>
+                            <td><input asp-for="@Model[i].AllowView" type="checkbox" /></td>
+                            <td><input asp-for="@Model[i].AllowCreate" type="checkbox" /></td>
+                            <td><input asp-for="@Model[i].AllowUpdate" type="checkbox" /></td>
+                            <td><input asp-for="@Model[i].AllowDelete" type="checkbox" /></td>                           
+                        </tr>                                            
+                    }
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

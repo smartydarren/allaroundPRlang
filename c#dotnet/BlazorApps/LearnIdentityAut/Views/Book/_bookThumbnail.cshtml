@@ -1,0 +1,15 @@
+﻿@model BookModel  //IEnumerable<BookModel>
+
+<div class="card mb-4 shadow-sm">
+    <img src="/images/Book.jpg" class="card-img-top" alt="MyLogo">
+    <div class="card-body">
+        <h3 class="card-title">@(string.IsNullOrEmpty(Model.BookTitle) ? "Title is empty" : Model.BookTitle)  - @(string.IsNullOrEmpty(Model.Language) ? "No Language" : Model.Language)</h3>
+        <p class="card-text">Short description of Book....</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <a asp-controller=Book asp-action=GetBook asp-route-bookid=@Model.BookID class="btn btn-sm btn-outline-secondary">View Details</a>
+            </div>
+            <small class="text-muted">@(string.IsNullOrEmpty(Model.Author) ? "Author not selected" : Model.Author)</small>
+        </div>
+    </div>
+</div>

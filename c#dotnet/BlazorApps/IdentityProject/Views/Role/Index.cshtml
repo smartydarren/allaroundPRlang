@@ -1,0 +1,62 @@
+﻿@using IdentityProject.Models.ViewModels.Role;
+@model IEnumerable<RoleIndexPageViewModel>
+
+@{
+    ViewData["Title"] = "Roles-List";
+}
+
+<h1 class="text-info">List of all Role</h1>
+
+<a class="btn btn-primary" asp-controller="Role" asp-action="Create">
+    <i class="bi bi-cloud-plus"></i>
+    <span class="sr-only">Create</span>
+</a>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Desc</th>
+                    <th scope="col">LastUpdateBy</th>
+                    <th scope="col">LastUpdateDt</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var rls in Model)
+                {
+                    <tr>
+                        <td>@rls.RoleId</td>
+                        <td>@rls.RoleName</td>
+                        <td>@rls.Description</td>
+                        <td>@rls.LastUpdatedBy</td>
+                        <td>@rls.LastUpdateDate</td>
+                        <td>
+                            <a class="btn-sm btn-outline-dark" asp-controller="Role" asp-action="Create" asp-route-_roleId=@rls.RoleId>
+                                <i class="bi bi-pencil-square"></i>
+                                <span class="sr-only">Edit</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn-sm btn-outline-info " asp-controller="Role" asp-action="Details" asp-route-_roleId=@rls.RoleId>
+                                <i class="bi bi-arrow-up-right-circle-fill"></i>
+                                <span class="sr-only"> Details</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm" asp-controller="Role" asp-action="ConfigureRole" asp-route-Id=@rls.RoleId>
+                                <i class="bi bi-gear"></i>
+                                <span class="sr-only"> Configure</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
